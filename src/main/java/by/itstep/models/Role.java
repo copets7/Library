@@ -1,6 +1,7 @@
 package by.itstep.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "role")
@@ -12,17 +13,17 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToOne(mappedBy = "role", cascade = CascadeType.ALL)
-    private User user;
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List <User> user;
 
     public Role() {
     }
 
-    public User getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 

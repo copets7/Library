@@ -11,9 +11,13 @@ public class User {
     private int id;
     @Column(name = "user_name")
     private String userName;
-    @OneToOne
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
+    @ManyToOne
     @JoinColumn(name = "role_id")
-    private  Role  role;
+    private Role role;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private LogRecord logRecord;
 
@@ -44,12 +48,37 @@ public class User {
         this.role = role;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LogRecord getLogRecord() {
+        return logRecord;
+    }
+
+    public void setLogRecord(LogRecord logRecord) {
+        this.logRecord = logRecord;
+    }
 
     @Override
     public String toString() {
-        return "\n" +
-                " id = " + id +
-                ", userName = " + userName +
-                ", role = " + role ;
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

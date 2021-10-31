@@ -25,16 +25,6 @@ public class LogRecord {
     private String createBy;
 
 
-    public LogRecord(int id, BookList bookList, User user, Status status, String createDate, String closeDate, String createBy) {
-        this.id = id;
-        this.bookList = bookList;
-        this.user = user;
-        this.status = status;
-        this.createDate = createDate;
-        this.closeDate = closeDate;
-        this.createBy = createBy;
-    }
-
     public LogRecord() {
     }
 

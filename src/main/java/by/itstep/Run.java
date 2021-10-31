@@ -32,14 +32,14 @@ public class Run {
         Run run = annotatedClassApplicationContext.getBean("run", Run.class);
 
 
-
-        System.out.println(run.roleControllerImpl.findAll());
-        System.out.println(run.typeGenreControllerImpl.findById(1));
-        System.out.println(run.bookControllerImpl.findAll());
-        System.out.println(run.userControllerImpl.findAll());
-        System.out.println(run.statusControllerImpl.findAll());
-        System.out.println(run.bookListControllerImpl.findAll());
-        System.out.println(run.logRecordControllerImpl.findAll());
+      run.userControllerImpl.deleteById(2);
+//        System.out.println(run.roleControllerImpl.findAll());
+//        System.out.println(run.typeGenreControllerImpl.findById(1));
+//        System.out.println(run.bookControllerImpl.findAll());
+//        System.out.println(run.userControllerImpl.findAll());
+//        System.out.println(run.statusControllerImpl.findAll());
+//        System.out.println(run.bookListControllerImpl.findAll());
+//        System.out.println(run.logRecordControllerImpl.findAll());
     }
 
     public StatusControllerImpl getStatusControllerImpl() {

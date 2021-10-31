@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Role</title>
+</head>
+<body>
+<form action="#" th:action="@{/role/edit}" th:object="${role}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="roleName">Role</label>
+    <input type="text" th:field="*{roleName}" id="roleName" placeholder="Role Name">
+    <br/>
+    <input type="submit" value="Update Role">
+</form>
+</body>
+</html>

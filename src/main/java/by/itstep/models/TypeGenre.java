@@ -12,14 +12,9 @@ public class TypeGenre {
     private int id;
     @Column(name = "genre_name")
     private String genreName;
-    @OneToOne(mappedBy = "typeGenre", cascade = CascadeType.ALL)
-    private Book book;
+    @OneToMany(mappedBy = "typeGenre", cascade = CascadeType.ALL)
+    private List <Book> book;
 
-    public TypeGenre(int id, String genreName, Book book) {
-        this.id = id;
-        this.genreName = genreName;
-        this.book = book;
-    }
 
     public TypeGenre() {
     }
@@ -40,11 +35,11 @@ public class TypeGenre {
         this.genreName = genreName;
     }
 
-    public Book getBook() {
+    public List<Book> getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(List<Book> book) {
         this.book = book;
     }
 

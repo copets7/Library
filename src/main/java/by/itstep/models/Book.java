@@ -16,7 +16,7 @@ public class Book {
     private String bookAuthor;
     @Column(name = "ISBN")
     private String ISBN;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "genre_id")
     private TypeGenre typeGenre;
 

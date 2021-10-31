@@ -1,13 +1,17 @@
 package by.itstep.controllers.impl;
 
 import by.itstep.controllers.UserController;
+import by.itstep.models.Role;
 import by.itstep.models.User;
 import org.springframework.stereotype.Controller;
 import by.itstep.service.impl.UserServiceImpl;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/user")
 public class UserControllerImpl implements UserController {
 
    private final UserServiceImpl userService;
@@ -15,6 +19,50 @@ public class UserControllerImpl implements UserController {
     public UserControllerImpl(UserServiceImpl userService) {
         this.userService = userService;
     }
+
+
+        @GetMapping()
+        public String index(Model model) {
+            model.addAttribute("users", userService.findAll());
+            return "user/index";
+        }
+
+        @GetMapping("/{id}")
+        public String show(@PathVariable("id") int id, Model model) {
+            model.addAttribute("user", userService.findById(id));
+            return "user/show";
+        }
+
+        @GetMapping("/new")
+        public String newPerson(@ModelAttribute("user") User user) {
+        return "user/new";
+    }
+
+    @PostMapping()
+    public String create(@ModelAttribute("user") User user) {
+        userService.save(user);
+        return "redirect:/user";
+    }
+
+    @GetMapping("delete/{id}")
+    public String deleteUser(@PathVariable("id")int id){
+        userService.deleteById(id);
+        return "redirect:/user";
+    }
+
+    @GetMapping("edit/{id}")
+    public String updateUserForm(@PathVariable("id") int id ,Model model){
+        User user = userService.findById(id);
+        model.addAttribute("user",user);
+        return "user/edit";
+    }
+
+    @PostMapping("/edit")
+    public String updateUser(User user){
+        userService.save(user);
+        return "redirect:/user";
+    }
+
 
     @Override
     public List<User> findAll() {
