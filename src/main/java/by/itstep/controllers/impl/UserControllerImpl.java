@@ -15,7 +15,7 @@ import java.util.List;
 public class UserControllerImpl implements UserController {
 
    private final UserServiceImpl userService;
-
+    private RoleControllerImpl roleController;
     public UserControllerImpl(UserServiceImpl userService) {
         this.userService = userService;
     }
@@ -38,8 +38,10 @@ public class UserControllerImpl implements UserController {
         return "user/new";
     }
 
-    @PostMapping()
-    public String create(@ModelAttribute("user") User user) {
+      @PostMapping()
+      public String create(@ModelAttribute("user") User user,Model model) {
+        List <Role> roles = roleController.findAll();
+        model.addAttribute("role",roles);
         userService.save(user);
         return "redirect:/user";
     }
