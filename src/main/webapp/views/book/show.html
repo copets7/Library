@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<p th:text="${book.getId()}">id</p>
+<p th:text="${book.getBookName()}">Book Name</p>
+<p th:text="${book.getBookAuthor()}">Book Author</p>
+<p th:text="${book.getISBN()}">ISBN</p>
+<p th:text="${book.typeGenre}">Genre</p>
+
+<a href="/book">Back</a>
+
+</body>
+</html>

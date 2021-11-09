@@ -12,10 +12,13 @@
   <input type="text" th:field="*{email}" id="email"/>
   <label for="password">Enter password: </label>
   <input type="text" th:field="*{password}" id="password"/>
-  <label for="role">role : </label>
-  <select th:field="*{role}">
-    <option value="r">Select Role</option>
-    <option th:each="r : ${role}" th:value="${r.id}" th:text="${r.id}" id="role"></option>
+  <label class="form-label">Role : </label>
+  <select th:field="*{id}">
+    <option th:each="role : ${roles}"
+            th:text="${role}"
+            th:value="${role.id}"
+            >
+    </option>
   </select>
 
   <br/>

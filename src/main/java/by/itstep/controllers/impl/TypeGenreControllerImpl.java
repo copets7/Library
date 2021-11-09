@@ -2,6 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.TypeGenreController;
 import by.itstep.models.TypeGenre;
+import by.itstep.service.TypeGenreService;
 import by.itstep.service.impl.TypeGenreServiceImpl;
 import org.springframework.stereotype.Controller;
 
@@ -10,9 +11,9 @@ import java.util.List;
 @Controller
 public class TypeGenreControllerImpl implements TypeGenreController {
 
-   private final TypeGenreServiceImpl typeGenreService;
+   private final TypeGenreService typeGenreService;
 
-    public TypeGenreControllerImpl(TypeGenreServiceImpl typeGenreService) {
+    public TypeGenreControllerImpl(TypeGenreService typeGenreService) {
         this.typeGenreService = typeGenreService;
     }
 

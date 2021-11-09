@@ -3,6 +3,7 @@ package by.itstep.controllers.impl;
 import by.itstep.controllers.RoleController;
 import by.itstep.models.Role;
 import by.itstep.models.User;
+import by.itstep.service.RoleService;
 import by.itstep.service.impl.RoleServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,11 @@ import java.util.List;
 @RequestMapping("/role")
 public class RoleControllerImpl implements RoleController {
 
-    private final RoleServiceImpl roleService;
+    private final RoleService roleService;
 
-    public RoleControllerImpl(RoleServiceImpl roleService) {
+    public RoleControllerImpl(RoleService roleService) {
         this.roleService = roleService;
     }
-
-
 
     @GetMapping()
     public String index(Model model) {
@@ -35,7 +34,7 @@ public class RoleControllerImpl implements RoleController {
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("role") Role role) {
+    public String newRole(@ModelAttribute("role") Role role) {
         return "role/new";
     }
 
@@ -46,20 +45,20 @@ public class RoleControllerImpl implements RoleController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteUser(@PathVariable("id")int id){
+    public String deleteRole(@PathVariable("id")int id){
         roleService.deleteById(id);
         return "redirect:/role";
     }
 
     @GetMapping("edit/{id}")
-    public String updateUserForm(@PathVariable("id") int id ,Model model){
+    public String updateRoleForm(@PathVariable("id") int id ,Model model){
         Role role = roleService.findById(id);
         model.addAttribute("role",role);
         return "role/edit";
     }
 
     @PostMapping("/edit")
-    public String updateUser(Role role){
+    public String updateRole(Role role){
         roleService.save(role);
         return "redirect:/role";
     }

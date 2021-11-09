@@ -1,7 +1,7 @@
 package by.itstep;
 
 import by.itstep.config.AppConfiguration;
-import by.itstep.controllers.RoleController;
+import by.itstep.controllers.*;
 import by.itstep.controllers.impl.*;
 import by.itstep.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +12,19 @@ import org.springframework.stereotype.Component;
 public class Run {
 
     @Autowired
-    UserControllerImpl userControllerImpl;
+    UserController userController;
     @Autowired
-    RoleControllerImpl roleControllerImpl;
+    RoleController roleController;
     @Autowired
-    BookControllerImpl bookControllerImpl;
+    BookController bookController;
     @Autowired
-    TypeGenreControllerImpl typeGenreControllerImpl;
+    TypeGenreController typeGenreController;
     @Autowired
-    StatusControllerImpl statusControllerImpl;
+    StatusController statusController;
     @Autowired
-    BookListControllerImpl bookListControllerImpl;
+    BookListController bookListController;
     @Autowired
-    LogRecordControllerImpl logRecordControllerImpl;
+    LogRecordController logRecordController;
 
 
     public static void main(String[] args) {
@@ -32,69 +32,21 @@ public class Run {
         Run run = annotatedClassApplicationContext.getBean("run", Run.class);
 
 
-      run.userControllerImpl.deleteById(2);
-//        System.out.println(run.roleControllerImpl.findAll());
+
+        System.out.println(run.roleController.findAll());
+        User user = new User();
+        user.setUserName("qwrqre");
+        user.setEmail("qwrq@mail.by");
+        user.setPassword("21414");
+        user.setRole(run.roleController.findById(3));
+
+        run.userController.save(user);
+
 //        System.out.println(run.typeGenreControllerImpl.findById(1));
 //        System.out.println(run.bookControllerImpl.findAll());
-//        System.out.println(run.userControllerImpl.findAll());
+        System.out.println(run.userController.findAll());
 //        System.out.println(run.statusControllerImpl.findAll());
 //        System.out.println(run.bookListControllerImpl.findAll());
 //        System.out.println(run.logRecordControllerImpl.findAll());
-    }
-
-    public StatusControllerImpl getStatusControllerImpl() {
-        return statusControllerImpl;
-    }
-
-    public void setStatusControllerImpl(StatusControllerImpl statusControllerImpl) {
-        this.statusControllerImpl = statusControllerImpl;
-    }
-
-    public BookListControllerImpl getBookListControllerImpl() {
-        return bookListControllerImpl;
-    }
-
-    public void setBookListControllerImpl(BookListControllerImpl bookListControllerImpl) {
-        this.bookListControllerImpl = bookListControllerImpl;
-    }
-
-    public LogRecordControllerImpl getLogRecordController() {
-        return logRecordControllerImpl;
-    }
-
-    public void setLogRecordController(LogRecordControllerImpl logRecordController) {
-        this.logRecordControllerImpl = logRecordController;
-    }
-
-    public BookControllerImpl getBookControllerImpl() {
-        return bookControllerImpl;
-    }
-
-    public void setBookControllerImpl(BookControllerImpl bookControllerImpl) {
-        this.bookControllerImpl = bookControllerImpl;
-    }
-
-    public TypeGenreControllerImpl getTypeGenreControllerImpl() {
-        return typeGenreControllerImpl;
-    }
-
-    public void setTypeGenreControllerImpl(TypeGenreControllerImpl typeGenreControllerImpl) {
-        this.typeGenreControllerImpl = typeGenreControllerImpl;
-    }
-
-    public UserControllerImpl getUserControllerImpl() {
-        return userControllerImpl;
-    }
-
-    public void setUserControllerImpl(UserControllerImpl userControllerImpl) {
-        this.userControllerImpl = userControllerImpl;
-    }
-
-    public RoleControllerImpl getRoleControllerImpl() {
-        return roleControllerImpl;
-    }
-
-    public void setRoleControllerImpl(RoleControllerImpl roleControllerImpl) {
-        this.roleControllerImpl = roleControllerImpl;
     }
 }

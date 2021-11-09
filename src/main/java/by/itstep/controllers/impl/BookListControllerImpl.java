@@ -2,6 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.BookListController;
 import by.itstep.models.BookList;
+import by.itstep.service.BookListService;
 import by.itstep.service.impl.BookListServiceImpl;
 import org.springframework.stereotype.Controller;
 
@@ -9,9 +10,9 @@ import java.util.List;
 @Controller
 public class BookListControllerImpl implements BookListController {
 
-    private final BookListServiceImpl bookListService;
+    private final BookListService bookListService;
 
-    public BookListControllerImpl(BookListServiceImpl bookListService) {
+    public BookListControllerImpl(BookListService bookListService) {
         this.bookListService = bookListService;
     }
 

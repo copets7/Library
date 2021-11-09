@@ -2,6 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.StatusController;
 import by.itstep.models.Status;
+import by.itstep.service.StatusService;
 import by.itstep.service.impl.StatusServiceImpl;
 import org.springframework.stereotype.Controller;
 
@@ -9,9 +10,9 @@ import java.util.List;
 @Controller
 public class StatusControllerImpl implements StatusController {
 
-    private final StatusServiceImpl statusService;
+    private final StatusService statusService;
 
-    public StatusControllerImpl(StatusServiceImpl statusService) {
+    public StatusControllerImpl(StatusService statusService) {
         this.statusService = statusService;
     }
 

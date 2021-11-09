@@ -2,6 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.LogRecordController;
 import by.itstep.models.LogRecord;
+import by.itstep.service.LogRecordService;
 import by.itstep.service.impl.LogRecordServiceImpl;
 import org.springframework.stereotype.Controller;
 
@@ -10,9 +11,9 @@ import java.util.List;
 @Controller
 public class LogRecordControllerImpl implements LogRecordController {
 
-    private final LogRecordServiceImpl logRecordService;
+    private final LogRecordService logRecordService;
 
-    public LogRecordControllerImpl(LogRecordServiceImpl logRecordService) {
+    public LogRecordControllerImpl(LogRecordService logRecordService) {
         this.logRecordService = logRecordService;
     }
 
