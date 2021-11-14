@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Status</title>
+</head>
+<body>
+<form action="#" th:action="@{/status/edit}" th:object="${status}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="statusName">Status</label>
+    <input type="text" th:field="*{statusName}" id="statusName" placeholder="Status Name">
+    <br/>
+    <input type="submit" value="Update Status">
+</form>
+</body>
+</html>

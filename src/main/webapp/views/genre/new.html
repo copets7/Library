@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create genre</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/genre}" th:object="${genre}" >
+  <label for="genreName">Enter genre : </label>
+  <input type="text" th:field="*{genreName}" id="genreName"/>
+
+  <br/>
+  <input type="submit" value="Create!"/>
+
+</form>
+<a href="/genre">Back</a>
+</body>
+</html>

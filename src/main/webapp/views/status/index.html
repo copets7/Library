@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Status</title>
+</head>
+<body>
+<div th:switch="${status}">
+    <h2 th:case="null">No status found!</h2>
+    <div th:case="*">
+        <h2>Status</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="st : ${status}">
+                <td th:text="${st.id}"></td>
+                <td th:text="${st.statusName}"></td>
+                <td><a th:href="@{status/edit/{id}(id=${st.id})}">Edit</a></td>
+                <td><a th:href="@{status/delete/{id}(id=${st.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/status/new">Create status</a></p>
+</div>
+<a href="/status">Back</a>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre</title>
+</head>
+<body>
+<div th:switch="${genre}">
+    <h2 th:case="null">No genre found!</h2>
+    <div th:case="*">
+        <h2>Genre</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Genre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="gen : ${genre}">
+                <td th:text="${gen.id}"></td>
+                <td th:text="${gen.genreName}"></td>
+                <td><a th:href="@{genre/edit/{id}(id=${gen.id})}">Edit</a></td>
+                <td><a th:href="@{genre/delete/{id}(id=${gen.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/genre/new">Create genre</a></p>
+</div>
+<a href="/genre">Back</a>
+</body>
+</html>

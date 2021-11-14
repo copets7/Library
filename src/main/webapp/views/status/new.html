@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create status</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/status}" th:object="${status}" >
+  <label for="statusName">Enter status : </label>
+  <input type="text" th:field="*{statusName}" id="statusName"/>
+
+  <br/>
+  <input type="submit" value="Create!"/>
+
+</form>
+<a href="/status">Back</a>
+</body>
+</html>
