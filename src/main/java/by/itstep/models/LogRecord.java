@@ -1,6 +1,8 @@
 package by.itstep.models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "log_record")
@@ -9,8 +11,8 @@ public class LogRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    @JoinColumn(name = "lib_code")
-    private BookList bookList;
+    @JoinColumn(name = "book_id")
+    private Book book;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -24,6 +26,15 @@ public class LogRecord {
     @Column(name = "create_by")
     private String createBy;
 
+    public LogRecord(int id, Book book, User user, Status status, String createDate, String closeDate, String createBy) {
+        this.id = id;
+        this.book = book;
+        this.user = user;
+        this.status = status;
+        this.createDate = createDate;
+        this.closeDate = closeDate;
+        this.createBy = createBy;
+    }
 
     public LogRecord() {
     }
@@ -36,12 +47,12 @@ public class LogRecord {
         this.id = id;
     }
 
-    public BookList getBookList() {
-        return bookList;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookList(BookList bookList) {
-        this.bookList = bookList;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public User getUser() {
@@ -82,18 +93,5 @@ public class LogRecord {
 
     public void setCreateBy(String createBy) {
         this.createBy = createBy;
-    }
-
-    @Override
-    public String toString() {
-        return "LogRecord{" +
-                "id=" + id +
-                ", createDate='" + createDate + '\'' +
-                ", closeDate='" + closeDate + '\'' +
-                ", createBy='" + createBy + '\'' +
-                ", bookList=" + bookList +
-                ", user=" + user +
-                ", status=" + status +
-                '}';
     }
 }

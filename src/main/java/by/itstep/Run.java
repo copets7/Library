@@ -22,8 +22,6 @@ public class Run {
     @Autowired
     StatusController statusController;
     @Autowired
-    BookListController bookListController;
-    @Autowired
     LogRecordController logRecordController;
 
 
@@ -33,18 +31,34 @@ public class Run {
 
 
 
-        System.out.println(run.roleController.findAll());
-        User user = new User();
-        user.setUserName("qwrqre");
-        user.setEmail("qwrq@mail.by");
-        user.setPassword("21414");
-        user.setRole(run.roleController.findById(3));
+//
+//        User user = new User();
+//        user.setUserName("qwrqre");
+//        user.setEmail("qwrq@mail.by");
+//        user.setPassword("21414");
+//        user.setRole(run.roleController.findById(3));
+//
+//        Book book = new Book();
+//
+//        Status status = new Status();
+//        status.setStatusName("on hand");
+//        run.statusController.save(status);
+//        run.userController.save(user);
+//        LogRecord logRecord = new LogRecord();
+//        logRecord.setLibCode("qwq");
+//        logRecord.setUser(user);
+//        logRecord.setStatus(status);
+//        logRecord.setCreateDate("12.12.2021");
+//        logRecord.setCloseDate("12.02.2022");
+//        logRecord.setCreateBy("CopetS");
+//        logRecord.setBooks( run.bookController.findAll());
+//        run.logRecordController.save(logRecord);
 
-        run.userController.save(user);
-
+        System.out.println(run.logRecordController.findById(2));
 //        System.out.println(run.typeGenreControllerImpl.findById(1));
 //        System.out.println(run.bookControllerImpl.findAll());
-        System.out.println(run.userController.findAll());
+//        System.out.println(run.userController.findAll());
+       // System.out.println(run.logRecordController.findAll());
 //        System.out.println(run.statusControllerImpl.findAll());
 //        System.out.println(run.bookListControllerImpl.findAll());
 //        System.out.println(run.logRecordControllerImpl.findAll());

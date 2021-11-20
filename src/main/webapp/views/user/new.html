@@ -13,7 +13,7 @@
   <label for="password">Enter password: </label>
   <input type="text" th:field="*{password}" id="password"/>
   <label class="form-label">Role : </label>
-  <select th:field="*{id}">
+  <select th:field="*{id}" >
     <option th:each="role : ${roles}"
             th:text="${role}"
             th:value="${role.id}"

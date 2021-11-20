@@ -3,6 +3,7 @@ package by.itstep.controllers;
 import by.itstep.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserController {
     List<User> findAll();

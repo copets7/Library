@@ -2,8 +2,9 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.LogRecordController;
 import by.itstep.models.LogRecord;
-import by.itstep.models.User;
+import by.itstep.service.BookService;
 import by.itstep.service.LogRecordService;
+import by.itstep.service.StatusService;
 import by.itstep.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,35 +17,46 @@ import java.util.List;
 public class LogRecordControllerImpl implements LogRecordController {
 
     private final LogRecordService logRecordService;
+    private final BookService bookService;
     private final UserService userService;
+    private final StatusService statusService;
 
-    public LogRecordControllerImpl(LogRecordService logRecordService, UserService userService) {
+    public LogRecordControllerImpl(LogRecordService logRecordService, BookService bookService, UserService userService, StatusService statusService) {
         this.logRecordService = logRecordService;
+        this.bookService = bookService;
         this.userService = userService;
+        this.statusService = statusService;
     }
 
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("logs", logRecordService.findAll());
+        model.addAttribute("records", logRecordService.findAll());
         return "record/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("log", logRecordService.findById(id));
+        model.addAttribute("record", logRecordService.findById(id));
         return "record/show";
     }
 
     @GetMapping("/new")
-    public String newRecord(@ModelAttribute("log") LogRecord logRecord, Model model) {
-        model.addAttribute("log", logRecordService.findAll());
+    public String newRecord(@ModelAttribute("record") LogRecord logRecord, Model model) {
+        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("status", statusService.findAll());
         return "record/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("log") LogRecord logRecord ,@RequestParam("id") int id) {
-        logRecord.setUser(userService.findById(id));
+    public String create(@ModelAttribute("record") LogRecord logRecord ,
+                         @RequestParam("b") int bookId,
+                         @RequestParam("u") int userId,
+                         @RequestParam("s") int statusId) {
+        logRecord.setBook(bookService.findById(bookId));
+        logRecord.setUser(userService.findById(userId));
+        logRecord.setStatus(statusService.findById(statusId));
         logRecordService.save(logRecord);
         return "redirect:/record";
     }
@@ -57,15 +69,22 @@ public class LogRecordControllerImpl implements LogRecordController {
 
     @GetMapping("edit/{id}")
     public String updateRecordForm(@PathVariable("id") int id ,Model model){
-        model.addAttribute("log", logRecordService.findAll());
+        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("status", statusService.findAll());
         LogRecord logRecord = logRecordService.findById(id);
-        model.addAttribute("log",logRecord);
+        model.addAttribute("record", logRecord);
         return "record/edit";
     }
 
     @PostMapping("/edit")
-    public String updateRecord(LogRecord logRecord,@RequestParam("role.id") int userId){
+    public String updateRecord(LogRecord logRecord,
+                               @RequestParam("b") int bookId,
+                               @RequestParam("u") int userId,
+                               @RequestParam("s") int statusId){
+        logRecord.setBook(bookService.findById(bookId));
         logRecord.setUser(userService.findById(userId));
+        logRecord.setStatus(statusService.findById(statusId));
         logRecordService.save(logRecord);
         return "redirect:/record";
     }
@@ -78,7 +97,7 @@ public class LogRecordControllerImpl implements LogRecordController {
 
     @Override
     public LogRecord findById(int id) {
-        return logRecordService.findById(id);
+        return  logRecordService.findById(id);
     }
 
     @Override

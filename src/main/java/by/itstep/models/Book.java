@@ -3,6 +3,7 @@ package by.itstep.models;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -19,13 +20,16 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private TypeGenre typeGenre;
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    private LogRecord logRecord;
 
-    public Book(int id, String bookName, String bookAuthor, String ISBN, TypeGenre typeGenre) {
+    public Book(int id, String bookName, String bookAuthor, String ISBN, TypeGenre typeGenre, LogRecord logRecord) {
         this.id = id;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.ISBN = ISBN;
         this.typeGenre = typeGenre;
+        this.logRecord = logRecord;
     }
 
     public Book() {
@@ -71,13 +75,11 @@ public class Book {
         this.typeGenre = typeGenre;
     }
 
-    @Override
-    public String toString() {
-        return
-                "id = " + id +
-                ", bookName = " + bookName +
-                ", bookAuthor = " + bookAuthor +
-                ", ISBN = " + ISBN +
-                ", typeGenre = " + typeGenre ;
+    public LogRecord getLogRecord() {
+        return logRecord;
+    }
+
+    public void setLogRecord(LogRecord logRecord) {
+        this.logRecord = logRecord;
     }
 }

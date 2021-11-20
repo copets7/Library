@@ -6,6 +6,7 @@ import by.itstep.service.LogRecordService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LogRecordServiceImpl implements LogRecordService {
@@ -23,26 +24,26 @@ public class LogRecordServiceImpl implements LogRecordService {
 
     @Override
     public LogRecord findById(int id) {
-        return null;
+        return logRecordRepository.findById(id).get();
     }
 
     @Override
     public LogRecord save(LogRecord logRecord) {
-        return null;
+        return logRecordRepository.save(logRecord);
     }
 
     @Override
     public LogRecord update(LogRecord logRecord) {
-        return null;
+        return logRecordRepository.saveAndFlush(logRecord);
     }
 
     @Override
     public void delete(LogRecord logRecord) {
-
+    logRecordRepository.delete(logRecord);
     }
 
     @Override
     public void deleteById(int id) {
-
+    logRecordRepository.deleteById(id);
     }
 }

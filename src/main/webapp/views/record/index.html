@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Records</title>
+</head>
+<body>
+<div th:switch="${records}">
+    <h2 th:case="null">No records found!</h2>
+    <div th:case="*">
+        <h2>Records</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Book Name</th>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Create Date</th>
+                <th>Close Date</th>
+                <th>Create By</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="record : ${records}">
+                <td th:text="${record.id}"></td>
+                <td th:text="${record.book}"></td>
+                <td th:text="${record.user}"></td>
+                <td th:text="${record.status}"></td>
+                <td th:text="${record.createDate}"></td>
+                <td th:text="${record.closeDate}"></td>
+                <td th:text="${record.createBy}"></td>
+                <td><a th:href="@{record/edit/{id}(id=${record.id})}">Edit</a></td>
+                <td><a th:href="@{record/delete/{id}(id=${record.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/record/new">Create record</a></p>
+</div>
+<a href="/record">Back</a>
+</body>
+</html>

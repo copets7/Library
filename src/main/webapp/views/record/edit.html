@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+<form action="#" th:action="@{/record/edit}" th:object="${record}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+
+    <label class="form-label">Enter book: </label>
+    <select th:name="b" >
+        <option th:each="book : ${books}"
+                th:text="${book}"
+                th:value="${book.id}"
+
+        >
+        </option>
+    </select>
+
+    <label class="form-label">Enter user: </label>
+    <select th:name="u" >
+        <option th:each="user : ${users}"
+                th:text="${user}"
+                th:value="${user.id}"
+
+        >
+        </option>
+    </select>
+
+    <label class="form-label">Enter status: </label>
+    <select th:name="s" >
+        <option th:each="stat : ${status}"
+                th:text="${stat}"
+                th:value="${stat.id}"
+
+        >
+        </option>
+    </select>
+    <label for="createDate">Enter create date: </label>
+    <input type="text" th:field="*{createDate}" id="createDate" placeholder="Create Date"/>
+    <label for="closeDate">Enter create date: </label>
+    <input type="text" th:field="*{closeDate}" id="closeDate" placeholder="close Date"/>
+    <label for="createBy">Enter name: </label>
+    <input type="text" th:field="*{createBy}" id="createBy" placeholder="Create By"/>
+    <br/>
+    <input type="submit" value="Update User">
+</form>
+<a href="/user">Back</a>
+</body>
+</html>

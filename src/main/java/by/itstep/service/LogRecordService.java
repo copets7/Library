@@ -2,6 +2,7 @@ package by.itstep.service;
 
 import by.itstep.models.LogRecord;
 import java.util.List;
+import java.util.Optional;
 
 public interface LogRecordService {
 
