@@ -1,6 +1,7 @@
 package by.itstep.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "status")
@@ -11,23 +12,16 @@ public class Status {
     private int id;
     @Column(name = "status_name")
     private String statusName;
-    @OneToOne(mappedBy = "status")
-    private LogRecord logRecord;
+    @OneToMany(mappedBy = "status")
+    private List<LogRecord> logRecord;
 
-    public Status(int id, String statusName) {
+    public Status(int id, String statusName, List<LogRecord> logRecord) {
         this.id = id;
         this.statusName = statusName;
+        this.logRecord = logRecord;
     }
 
     public Status() {
-    }
-
-    public LogRecord getLogRecord() {
-        return logRecord;
-    }
-
-    public void setLogRecord(LogRecord logRecord) {
-        this.logRecord = logRecord;
     }
 
     public int getId() {
@@ -46,10 +40,11 @@ public class Status {
         this.statusName = statusName;
     }
 
-    @Override
-    public String toString() {
-        return "Status{" +
-                "id = " + id +
-                " statusName = " + statusName ;
+    public List<LogRecord> getLogRecord() {
+        return logRecord;
+    }
+
+    public void setLogRecord(List<LogRecord> logRecord) {
+        this.logRecord = logRecord;
     }
 }

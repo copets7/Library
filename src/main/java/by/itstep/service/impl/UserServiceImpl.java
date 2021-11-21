@@ -1,6 +1,8 @@
 package by.itstep.service.impl;
 
 import by.itstep.models.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import by.itstep.repository.UserRepository;
 import by.itstep.service.UserService;
@@ -45,4 +47,5 @@ public class UserServiceImpl implements UserService {
     public void deleteById(int id) {
         userRepository.deleteById(id);
     }
+
 }

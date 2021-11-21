@@ -16,7 +16,7 @@ public class LogRecord {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
     @Column(name = "create_date")
@@ -93,5 +93,18 @@ public class LogRecord {
 
     public void setCreateBy(String createBy) {
         this.createBy = createBy;
+    }
+
+    @Override
+    public String toString() {
+        return "LogRecord{" +
+                "id=" + id +
+                ", book=" + book +
+                ", user=" + user +
+                ", status=" + status +
+                ", createDate='" + createDate + '\'' +
+                ", closeDate='" + closeDate + '\'' +
+                ", createBy='" + createBy + '\'' +
+                '}';
     }
 }
