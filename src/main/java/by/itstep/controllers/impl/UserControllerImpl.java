@@ -1,7 +1,7 @@
 package by.itstep.controllers.impl;
 
 import by.itstep.controllers.UserController;
-import by.itstep.models.Role;
+import by.itstep.dto.UserDto;
 import by.itstep.models.User;
 import by.itstep.service.RoleService;
 import by.itstep.service.UserService;
@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/user")
@@ -38,16 +38,21 @@ public class UserControllerImpl implements UserController {
         }
 
         @GetMapping("/new")
-        public String newUser( @ModelAttribute("user") User user,  Model model) {
+        public String newUser(Model model) {
+        model.addAttribute("user", new UserDto());
         model.addAttribute("roles", roleService.findAll());
         return "user/new";
     }
 
       @PostMapping()
-      public String create(@ModelAttribute("user") User user,@RequestParam("id") int id) {
-        user.setRole(roleService.findById(id));
-        userService.save(user);
-        return "redirect:/user";
+      public String create(UserDto userDto,@RequestParam("id") int id, Model model) {
+        userDto.setRole(roleService.findById(id));
+       if (userService.saveDto(userDto)) {
+           return "redirect:/user";
+       } else {
+           model.addAttribute("user" , userDto);
+           return "user/new";
+       }
     }
 
     @GetMapping("delete/{id}")

@@ -1,8 +1,9 @@
 package by.itstep.models;
 
+
 import javax.persistence.*;
-import java.util.List;
-import java.util.Optional;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "log_record")

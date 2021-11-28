@@ -19,7 +19,7 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user")
     private LogRecord logRecord;
 
     public User() {
@@ -27,10 +27,6 @@ public class User {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUserName() {

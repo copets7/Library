@@ -1,6 +1,9 @@
 package by.itstep.service;
 
 import by.itstep.models.LogRecord;
+
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,4 +20,6 @@ public interface LogRecordService {
     void delete(LogRecord logRecord);
 
     void deleteById(int id);
+
+    boolean stringToDate(String dateToParse, String dateToParse2) throws ParseException;
 }

@@ -12,7 +12,7 @@ public class TypeGenre {
     private int id;
     @Column(name = "genre_name")
     private String genreName;
-    @OneToMany(mappedBy = "typeGenre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "typeGenre")
     private List <Book> book;
 
 

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,7 @@ public class LogRecordControllerImpl implements LogRecordController {
     private final BookService bookService;
     private final UserService userService;
     private final StatusService statusService;
+
 
     public LogRecordControllerImpl(LogRecordService logRecordService, BookService bookService, UserService userService, StatusService statusService) {
         this.logRecordService = logRecordService;
@@ -53,7 +57,9 @@ public class LogRecordControllerImpl implements LogRecordController {
     public String create(@ModelAttribute("record") LogRecord logRecord ,
                          @RequestParam("b") int bookId,
                          @RequestParam("u") int userId,
-                         @RequestParam("s") int statusId) {
+                         @RequestParam("s") int statusId
+                        ) throws RuntimeException
+                         {
         logRecord.setBook(bookService.findById(bookId));
         logRecord.setUser(userService.findById(userId));
         logRecord.setStatus(statusService.findById(statusId));

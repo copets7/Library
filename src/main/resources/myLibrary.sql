@@ -41,7 +41,7 @@ create table user
     user_name varchar(45) not null,
     role_id   bigint      not null,
     email     varchar(45) not null,
-    password  varchar(45) not null,
+    password  varchar(255) not null,
     constraint role
         foreign key (role_id) references role (id)
 );

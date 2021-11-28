@@ -20,7 +20,7 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private TypeGenre typeGenre;
-    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "book")
     private LogRecord logRecord;
 
     public Book(int id, String bookName, String bookAuthor, String ISBN, TypeGenre typeGenre, LogRecord logRecord) {

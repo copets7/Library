@@ -6,10 +6,10 @@
     <title>Record</title>
 </head>
 <body>
-<p th:text="${logRecord.getId()}">id</p>
-<!--<p th:text="${user.getUserName()}">UserName</p>-->
-<!--<p th:text="${user.getEmail()}">Email</p>-->
-<!--<p th:text="${user.getRole()}">Email</p>-->
+<p th:text="${record.getId()}">id</p>
+<p th:text="${record.book.getBookName}">BookName</p>
+<p th:text="${record.user.getUserName}">UserName</p>
+<p th:text="${record.status.getStatusName}">Status</p>
 
 <a href="/record">Back</a>
 

@@ -10,6 +10,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findAll();
 
+    User findFirstByUserName (String name);
+
     User save(User user);
 
     void delete(User user);

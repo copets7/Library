@@ -4,32 +4,34 @@ import by.itstep.config.AppConfiguration;
 import by.itstep.controllers.*;
 import by.itstep.controllers.impl.*;
 import by.itstep.models.*;
+import by.itstep.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-@Component
-public class Run {
-
-    @Autowired
-    UserController userController;
-    @Autowired
-    RoleController roleController;
-    @Autowired
-    BookController bookController;
-    @Autowired
-    TypeGenreController typeGenreController;
-    @Autowired
-    StatusController statusController;
-    @Autowired
-    LogRecordController logRecordController;
-
-
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext annotatedClassApplicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
-        Run run = annotatedClassApplicationContext.getBean("run", Run.class);
-
-
+//@Component
+//public class Run {
+//
+//    @Autowired
+//    UserController userController;
+//    @Autowired
+//    RoleController roleController;
+//    @Autowired
+//    BookController bookController;
+//    @Autowired
+//    TypeGenreController typeGenreController;
+//    @Autowired
+//    StatusController statusController;
+//    @Autowired
+//    LogRecordController logRecordController;
+//
+//    @Autowired
+//    BookService bookService;
+//
+//    public static void main(String[] args) {
+//        AnnotationConfigApplicationContext annotatedClassApplicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+//        Run run = annotatedClassApplicationContext.getBean("run", Run.class);
+//
 
 //
 //        User user = new User();
@@ -54,7 +56,7 @@ public class Run {
 //        logRecord.setBooks( run.bookController.findAll());
 //        run.logRecordController.save(logRecord);
 
-        System.out.println(run.logRecordController.findById(2));
+
 //        System.out.println(run.typeGenreControllerImpl.findById(1));
 //        System.out.println(run.bookControllerImpl.findAll());
 //        System.out.println(run.userController.findAll());
@@ -62,5 +64,5 @@ public class Run {
 //        System.out.println(run.statusControllerImpl.findAll());
 //        System.out.println(run.bookListControllerImpl.findAll());
 //        System.out.println(run.logRecordControllerImpl.findAll());
-    }
-}
+//    }
+//}

@@ -13,7 +13,7 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role")
     private List <User> user;
 
     public Role() {
@@ -41,10 +41,5 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
-    }
-
-    @Override
-    public String toString() {
-        return roleName;
     }
 }

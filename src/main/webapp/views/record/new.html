@@ -10,7 +10,7 @@
   <label class="form-label">Enter book: </label>
   <select th:name="b" >
     <option th:each="book : ${books}"
-            th:text="${book}"
+            th:text="${book.bookName}"
             th:value="${book.id}"
 
     >
@@ -20,7 +20,7 @@
   <label class="form-label">Enter user: </label>
   <select th:name="u" >
     <option th:each="user : ${users}"
-            th:text="${user}"
+            th:text="${user.userName}"
             th:value="${user.id}"
 
     >
@@ -30,20 +30,20 @@
   <label class="form-label">Enter status: </label>
   <select th:name="s" >
     <option th:each="stat : ${status}"
-            th:text="${stat}"
+            th:text="${stat.statusName}"
             th:value="${stat.id}"
 
     >
     </option>
   </select>
   <label for="createDate">Enter create date: </label>
-  <input type="text" th:field="*{createDate}" id="createDate"/>
-  <label for="closeDate">Enter create date: </label>
-  <input type="text" th:field="*{closeDate}" id="closeDate"/>
+  <input type="date" th:field="*{createDate}" id="createDate"/>
+  <label for="closeDate">Enter close date: </label>
+  <input type="date" th:field="*{closeDate}" id="closeDate"/>
   <label for="createBy">Enter name: </label>
   <input type="text" th:field="*{createBy}" id="createBy"/>
   <br/>
-  <input type="submit" value="Create!"/>
+  <input th:type="submit" value="Create!"/>
 
 </form>
 <a href="/record">Back</a>
