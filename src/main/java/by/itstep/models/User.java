@@ -19,8 +19,8 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-    @OneToOne(mappedBy = "user")
-    private LogRecord logRecord;
+    @OneToMany(mappedBy = "user")
+    private List <LogRecord> logRecord;
 
     public User() {
     }
@@ -61,11 +61,15 @@ public class User {
         this.password = password;
     }
 
-    public LogRecord getLogRecord() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<LogRecord> getLogRecord() {
         return logRecord;
     }
 
-    public void setLogRecord(LogRecord logRecord) {
+    public void setLogRecord(List<LogRecord> logRecord) {
         this.logRecord = logRecord;
     }
 

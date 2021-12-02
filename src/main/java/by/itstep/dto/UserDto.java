@@ -4,6 +4,7 @@ import by.itstep.models.LogRecord;
 import by.itstep.models.Role;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 public class UserDto {
 

@@ -21,5 +21,6 @@ public interface LogRecordService {
 
     void deleteById(int id);
 
-    boolean stringToDate(String dateToParse, String dateToParse2) throws ParseException;
+     void delayDate();
+
 }

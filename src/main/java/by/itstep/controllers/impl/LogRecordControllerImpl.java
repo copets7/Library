@@ -36,6 +36,7 @@ public class LogRecordControllerImpl implements LogRecordController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("records", logRecordService.findAll());
+        logRecordService.delayDate();
         return "record/index";
     }
 

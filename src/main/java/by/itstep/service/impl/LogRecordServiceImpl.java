@@ -24,12 +24,6 @@ public class LogRecordServiceImpl implements LogRecordService {
         this.logRecordRepository = logRecordRepository;
     }
 
-    public boolean stringToDate(String dateToParse, String dateToParse2) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy/MM/dd").parse(dateToParse);
-        Date date1 = new SimpleDateFormat("yyyy/MM/dd").parse(dateToParse2);
-        date.before(date1);
-        return true;
-    }
 
     @Override
     public List<LogRecord> findAll() {
@@ -61,5 +55,17 @@ public class LogRecordServiceImpl implements LogRecordService {
     public void deleteById(int id) {
     logRecordRepository.deleteById(id);
     }
+
+    @Override
+    public void delayDate(){
+        LocalDate localDate = LocalDate.now();
+        List <LogRecord> logRecords = logRecordRepository.findAll();
+        for(LogRecord rec : logRecords){
+         if(localDate.isAfter(rec.getCloseDate())) {
+             System.out.println("Delay" + rec.getBook().getBookName());
+         }
+        }
+    }
+
 
 }

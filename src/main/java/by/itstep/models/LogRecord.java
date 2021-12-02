@@ -1,8 +1,12 @@
 package by.itstep.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -14,20 +18,22 @@ public class LogRecord {
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "create_date")
-    private String createDate;
+    private LocalDate createDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "close_date")
-    private String closeDate;
+    private LocalDate closeDate;
     @Column(name = "create_by")
     private String createBy;
 
-    public LogRecord(int id, Book book, User user, Status status, String createDate, String closeDate, String createBy) {
+    public LogRecord(int id, Book book, User user, Status status, LocalDate createDate, LocalDate closeDate, String createBy) {
         this.id = id;
         this.book = book;
         this.user = user;
@@ -72,19 +78,19 @@ public class LogRecord {
         this.status = status;
     }
 
-    public String getCreateDate() {
+    public LocalDate getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
     }
 
-    public String getCloseDate() {
+    public LocalDate getCloseDate() {
         return closeDate;
     }
 
-    public void setCloseDate(String closeDate) {
+    public void setCloseDate(LocalDate closeDate) {
         this.closeDate = closeDate;
     }
 
