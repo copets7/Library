@@ -6,13 +6,11 @@ import by.itstep.service.BookService;
 import by.itstep.service.LogRecordService;
 import by.itstep.service.StatusService;
 import by.itstep.service.UserService;
+import by.itstep.utils.SendMail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -23,13 +21,15 @@ public class LogRecordControllerImpl implements LogRecordController {
     private final BookService bookService;
     private final UserService userService;
     private final StatusService statusService;
+    private  final SendMail sendMail;
 
 
-    public LogRecordControllerImpl(LogRecordService logRecordService, BookService bookService, UserService userService, StatusService statusService) {
+    public LogRecordControllerImpl(LogRecordService logRecordService, BookService bookService, UserService userService, StatusService statusService, SendMail sendMail) {
         this.logRecordService = logRecordService;
         this.bookService = bookService;
         this.userService = userService;
         this.statusService = statusService;
+        this.sendMail = sendMail;
     }
 
 

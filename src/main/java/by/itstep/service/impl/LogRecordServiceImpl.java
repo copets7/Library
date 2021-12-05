@@ -1,16 +1,11 @@
 package by.itstep.service.impl;
 
 import by.itstep.models.LogRecord;
-import by.itstep.repository.BookRepository;
 import by.itstep.repository.LogRecordRepository;
 import by.itstep.service.LogRecordService;
+import by.itstep.utils.SendMail;
 import org.springframework.stereotype.Service;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -18,10 +13,12 @@ import java.util.List;
 public class LogRecordServiceImpl implements LogRecordService {
 
     private final LogRecordRepository logRecordRepository;
+    private final SendMail sendMail;
 
 
-    public LogRecordServiceImpl(LogRecordRepository logRecordRepository) {
+    public LogRecordServiceImpl(LogRecordRepository logRecordRepository, SendMail sendMail) {
         this.logRecordRepository = logRecordRepository;
+        this.sendMail = sendMail;
     }
 
 
@@ -57,14 +54,17 @@ public class LogRecordServiceImpl implements LogRecordService {
     }
 
     @Override
-    public void delayDate(){
+    public boolean delayDate(){
         LocalDate localDate = LocalDate.now();
         List <LogRecord> logRecords = logRecordRepository.findAll();
         for(LogRecord rec : logRecords){
          if(localDate.isAfter(rec.getCloseDate())) {
-             System.out.println("Delay" + rec.getBook().getBookName());
+             System.out.println("Delay " +  rec.getBook().getBookName());
+             sendMail.sendMail(rec.getUser().getEmail());
+             return true;
          }
         }
+        return false;
     }
 
 

@@ -14,7 +14,7 @@
     <label class="form-label">Enter book: </label>
     <select th:name="b" >
         <option th:each="book : ${books}"
-                th:text="${book}"
+                th:text="${book.getBookName()}"
                 th:value="${book.id}"
 
         >
@@ -24,7 +24,7 @@
     <label class="form-label">Enter user: </label>
     <select th:name="u" >
         <option th:each="user : ${users}"
-                th:text="${user}"
+                th:text="${user.getUserName()}"
                 th:value="${user.id}"
 
         >
@@ -34,7 +34,7 @@
     <label class="form-label">Enter status: </label>
     <select th:name="s" >
         <option th:each="stat : ${status}"
-                th:text="${stat}"
+                th:text="${stat.getStatusName()}"
                 th:value="${stat.id}"
 
         >
@@ -49,6 +49,6 @@
     <br/>
     <input type="submit" value="Update User">
 </form>
-<a href="/user">Back</a>
+<a href="/record">Back</a>
 </body>
 </html>
