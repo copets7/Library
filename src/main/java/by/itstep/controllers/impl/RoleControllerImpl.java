@@ -45,20 +45,20 @@ public class RoleControllerImpl implements RoleController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteRole(@PathVariable("id")int id){
+    public String deleteRole(@PathVariable("id") int id) {
         roleService.deleteById(id);
         return "redirect:/role";
     }
 
     @GetMapping("edit/{id}")
-    public String updateRoleForm(@PathVariable("id") int id ,Model model){
+    public String updateRoleForm(@PathVariable("id") int id, Model model) {
         Role role = roleService.findById(id);
-        model.addAttribute("role",role);
+        model.addAttribute("role", role);
         return "role/edit";
     }
 
     @PostMapping("/edit")
-    public String updateRole(Role role){
+    public String updateRole(Role role) {
         roleService.save(role);
         return "redirect:/role";
     }

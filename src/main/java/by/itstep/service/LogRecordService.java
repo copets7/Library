@@ -21,6 +21,6 @@ public interface LogRecordService {
 
     void deleteById(int id);
 
-     boolean delayDate();
+     String delayDate(int id);
 
 }

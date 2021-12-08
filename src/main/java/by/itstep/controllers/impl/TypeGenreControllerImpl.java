@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/genre")
 public class TypeGenreControllerImpl implements TypeGenreController {
 
-   private final TypeGenreService typeGenreService;
+    private final TypeGenreService typeGenreService;
 
     public TypeGenreControllerImpl(TypeGenreService typeGenreService) {
         this.typeGenreService = typeGenreService;
@@ -45,20 +45,20 @@ public class TypeGenreControllerImpl implements TypeGenreController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteGenre(@PathVariable("id")int id){
+    public String deleteGenre(@PathVariable("id") int id) {
         typeGenreService.deleteById(id);
         return "redirect:/genre";
     }
 
     @GetMapping("edit/{id}")
-    public String updateGenreForm(@PathVariable("id") int id ,Model model){
+    public String updateGenreForm(@PathVariable("id") int id, Model model) {
         TypeGenre genre = typeGenreService.findById(id);
         model.addAttribute("genre", genre);
         return "genre/edit";
     }
 
     @PostMapping("/edit")
-    public String updateGenre(TypeGenre genre){
+    public String updateGenre(TypeGenre genre) {
         typeGenreService.save(genre);
         return "redirect:/genre";
     }

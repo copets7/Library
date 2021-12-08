@@ -33,6 +33,8 @@
                 <td th:text="${record.createBy}"></td>
                 <td><a th:href="@{record/edit/{id}(id=${record.id})}">Edit</a></td>
                 <td><a th:href="@{record/delete/{id}(id=${record.id})}">Delete</a></td>
+                <td  th:style="'color: red'" th:text="${delay.delayDate(record.id)}"></td>
+                <td><a th:style="'color: green'" th:href="@{record/delay/{id}(id=${record.id})}">Send mail</a></td>
             </tr>
             </tbody>
         </table>

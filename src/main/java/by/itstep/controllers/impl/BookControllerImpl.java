@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
 @RequestMapping("/book")
 public class BookControllerImpl implements BookController {
 
-   private final BookService bookService;
-   private final TypeGenreService typeGenreService;
+    private final BookService bookService;
+    private final TypeGenreService typeGenreService;
 
     public BookControllerImpl(BookService bookService, TypeGenreService typeGenreService) {
         this.bookService = bookService;
@@ -41,28 +42,28 @@ public class BookControllerImpl implements BookController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("book") Book book,@RequestParam("id") int id) {
+    public String create(@ModelAttribute("book") Book book, @RequestParam("id") int id) {
         book.setTypeGenre(typeGenreService.findById(id));
         bookService.save(book);
         return "redirect:/book";
     }
 
     @GetMapping("delete/{id}")
-    public String deleteBook(@PathVariable("id")int id){
+    public String deleteBook(@PathVariable("id") int id) {
         bookService.deleteById(id);
         return "redirect:/book";
     }
 
     @GetMapping("edit/{id}")
-    public String updateBookForm(@PathVariable("id") int id ,Model model){
+    public String updateBookForm(@PathVariable("id") int id, Model model) {
         model.addAttribute("genres", typeGenreService.findAll());
         Book book = bookService.findById(id);
-        model.addAttribute("book",book);
+        model.addAttribute("book", book);
         return "book/edit";
     }
 
     @PostMapping("/edit")
-    public String updateBook(Book book, @RequestParam("typeGenre.id") int genreId){
+    public String updateBook(Book book, @RequestParam("typeGenre.id") int genreId) {
         book.setTypeGenre(typeGenreService.findById(genreId));
         bookService.save(book);
         return "redirect:/book";

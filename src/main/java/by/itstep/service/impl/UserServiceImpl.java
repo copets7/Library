@@ -55,6 +55,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return true;
     }
+    @Override
+    public UserDto userToDto(User user){
+        UserDto userDto = new UserDto();
+        userDto.setUserName(user.getUserName());
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        userDto.setRole(user.getRole());
+        return userDto;
+    }
 
     @Override
     public User update(User user) {

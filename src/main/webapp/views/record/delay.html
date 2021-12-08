@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Title</title>
+</head>
+<body>
+<form  th:object="${record}" >
+<div>
+    <h1>Messages sent to email  :</h1>
+   <p th:text="${send.sendMail(record.user.getEmail())}"></p>
+    <h1 th:text="${record.user.getEmail()}"> Mail send</h1>
+    <p><a href="/record">Back</a></p>
+</div>
+</form>
+</body>
+</html>

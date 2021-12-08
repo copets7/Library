@@ -9,19 +9,19 @@ import java.security.Principal;
 @Controller
 public class MainController {
 
-   @RequestMapping({"", "/"})
+    @RequestMapping({"", "/"})
     public String index() {
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(Principal principal){
-       return "login";
+    public String login(Principal principal) {
+        return "login";
     }
 
     @RequestMapping("/login-error")
-    public String loginError(Model model){
-       model.addAttribute("loginError", true);
-       return "login";
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
     }
 }

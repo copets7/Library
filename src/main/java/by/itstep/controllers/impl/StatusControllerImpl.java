@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
 @RequestMapping("/status")
 public class StatusControllerImpl implements StatusController {
@@ -44,20 +45,20 @@ public class StatusControllerImpl implements StatusController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteStatus(@PathVariable("id")int id){
+    public String deleteStatus(@PathVariable("id") int id) {
         statusService.deleteById(id);
         return "redirect:/status";
     }
 
     @GetMapping("edit/{id}")
-    public String updateStatusForm(@PathVariable("id") int id ,Model model){
+    public String updateStatusForm(@PathVariable("id") int id, Model model) {
         Status status = statusService.findById(id);
         model.addAttribute("status", status);
         return "status/edit";
     }
 
     @PostMapping("/edit")
-    public String updateStatus(Status status){
+    public String updateStatus(Status status) {
         statusService.save(status);
         return "redirect:/status";
     }

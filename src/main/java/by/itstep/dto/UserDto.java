@@ -1,10 +1,7 @@
 package by.itstep.dto;
 
-import by.itstep.models.LogRecord;
-import by.itstep.models.Role;
 
-import javax.persistence.*;
-import java.util.Optional;
+import by.itstep.models.Role;
 
 public class UserDto {
 

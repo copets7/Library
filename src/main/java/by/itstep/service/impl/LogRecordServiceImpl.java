@@ -5,8 +5,10 @@ import by.itstep.repository.LogRecordRepository;
 import by.itstep.service.LogRecordService;
 import by.itstep.utils.SendMail;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -39,33 +41,27 @@ public class LogRecordServiceImpl implements LogRecordService {
 
     @Override
     public LogRecord update(LogRecord logRecord) {
-
         return logRecordRepository.saveAndFlush(logRecord);
     }
 
     @Override
     public void delete(LogRecord logRecord) {
-    logRecordRepository.delete(logRecord);
+        logRecordRepository.delete(logRecord);
     }
 
     @Override
     public void deleteById(int id) {
-    logRecordRepository.deleteById(id);
+        logRecordRepository.deleteById(id);
     }
 
     @Override
-    public boolean delayDate(){
+    public String delayDate(int id) {
         LocalDate localDate = LocalDate.now();
-        List <LogRecord> logRecords = logRecordRepository.findAll();
-        for(LogRecord rec : logRecords){
-         if(localDate.isAfter(rec.getCloseDate())) {
-             System.out.println("Delay " +  rec.getBook().getBookName());
-             sendMail.sendMail(rec.getUser().getEmail());
-             return true;
-         }
+        String str = "  This book is out of date ";
+        LogRecord rec = logRecordRepository.findById(id).get();
+        if (localDate.isAfter(rec.getCloseDate())) {
+            return str;
         }
-        return false;
+        return "";
     }
-
-
 }
