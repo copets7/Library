@@ -18,6 +18,8 @@
     <java.version>1.8</java.version>
     <spring.version>5.3.11</spring.version>
     <spring.security.version>5.3.1.RELEASE</spring.security.version>
+    <swagger>2.9.2</swagger>
+    <jackson.core>2.9.9</jackson.core>
   </properties>
 
   <dependencies>
@@ -138,11 +140,38 @@
       <version>1.6.2</version>
     </dependency>
 
-
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
       <artifactId>jackson-jaxrs-json-provider</artifactId>
       <version>2.13.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.core}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.core}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${swagger}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-data-rest</artifactId>
+      <version>${swagger}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${swagger}</version>
     </dependency>
 
   </dependencies>

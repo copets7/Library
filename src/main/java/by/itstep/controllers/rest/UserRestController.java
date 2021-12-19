@@ -5,7 +5,8 @@ import by.itstep.exception.UserNotFoundException;
 import by.itstep.models.User;
 import by.itstep.service.UserService;
 
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Api(value = "/users")
 public class UserRestController {
 
     private final UserService userService;
@@ -22,7 +24,7 @@ public class UserRestController {
         this.userService = userService;
     }
 
-
+    @ApiOperation(value = "Метод находит всех пользователей")
     @GetMapping(value = "/all")
     public ResponseEntity <List<User>> findAllUsers() {
         List<User> users = userService.findAll();
