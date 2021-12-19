@@ -12,7 +12,7 @@ public class TypeGenre {
     private int id;
     @Column(name = "genre_name")
     private String genreName;
-    @OneToMany(mappedBy = "typeGenre")
+    @OneToMany(mappedBy = "typeGenre" , fetch = FetchType.EAGER)
     private List <Book> book;
 
 

@@ -1,6 +1,8 @@
 package by.itstep.service.impl;
 
 import by.itstep.dto.UserDto;
+import by.itstep.exception.UserAlreadyExistException;
+import by.itstep.exception.UserNotFoundException;
 import by.itstep.models.Role;
 import by.itstep.models.Roles;
 import by.itstep.models.User;
@@ -28,6 +30,23 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
+
+    public User registration(User user) throws UserAlreadyExistException {
+        if (userRepository.findFirstByUserName(user.getUserName()) != null) {
+            throw new UserAlreadyExistException("Пользователь с таким именем существует");
+        }
+        return userRepository.save(user);
+    }
+
+    public User getOne(int id) throws UserNotFoundException {
+        User user = userRepository.findById(id).get();
+        if (user == null) {
+            throw new UserNotFoundException("Пользователь не найден");
+        }
+        return user;
+    }
+
 
     @Override
     public List<User> findAll() {
@@ -60,7 +79,6 @@ public class UserServiceImpl implements UserService {
         UserDto userDto = new UserDto();
         userDto.setUserName(user.getUserName());
         userDto.setEmail(user.getEmail());
-        userDto.setPassword(user.getPassword());
         userDto.setRole(user.getRole());
         return userDto;
     }

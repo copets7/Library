@@ -2,6 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.UserController;
 import by.itstep.dto.UserDto;
+import by.itstep.exception.UserNotFoundException;
 import by.itstep.models.User;
 import by.itstep.service.RoleService;
 import by.itstep.service.UserService;
@@ -32,7 +33,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
+    public String show(@PathVariable("id") int id, Model model) throws UserNotFoundException {
         model.addAttribute("user", userService.findById(id));
         return "user/show";
     }
@@ -62,7 +63,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @GetMapping("edit/{id}")
-    public String updateUserForm(@PathVariable("id") int id, Model model) {
+    public String updateUserForm(@PathVariable("id") int id, Model model) throws UserNotFoundException {
         model.addAttribute("roles", roleService.findAll());
         User user = userService.findById(id);
         UserDto userDto = userService.userToDto(user);
@@ -84,7 +85,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(int id) throws UserNotFoundException {
         return userService.findById(id);
     }
 
