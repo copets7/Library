@@ -6,6 +6,9 @@
     <title>Books</title>
 </head>
 <body>
+
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${books}">
     <h2 th:case="null">No books found!</h2>
     <div th:case="*">
@@ -27,14 +30,18 @@
                 <td th:text="${book.bookAuthor}"></td>
                 <td th:text="${book.ISBN}"></td>
                 <td th:text="${book.typeGenre.genreName}"></td>
-                <td><a th:href="@{book/edit/{id}(id=${book.id})}">Edit</a></td>
-                <td><a th:href="@{book/delete/{id}(id=${book.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{book/edit/{id}(id=${book.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{book/delete/{id}(id=${book.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/book/new">Create book</a></p>
+    <p><button onclick="location.href = '/book/new'">Create book</button></p>
 </div>
-<a href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

@@ -12,9 +12,6 @@ public class TypeGenre {
     private int id;
     @Column(name = "genre_name")
     private String genreName;
-    @OneToMany(mappedBy = "typeGenre" , fetch = FetchType.EAGER)
-    private List <Book> book;
-
 
     public TypeGenre() {
     }
@@ -33,14 +30,6 @@ public class TypeGenre {
 
     public void setGenreName(String genreName) {
         this.genreName = genreName;
-    }
-
-    public List<Book> getBook() {
-        return book;
-    }
-
-    public void setBook(List<Book> book) {
-        this.book = book;
     }
 
     @Override

@@ -2,35 +2,20 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Start page</title>
 
 </head>
-<body>
-<style>
-    body{
-        text-align: center;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto
-    }
-    a{
-        background: black;
-        color: white;
-        padding: 15px;
-        max-width: 125px;
-        margin: 5px;
-    }
-</style>
-<a href="/login">LOGIN</a>
-<a href="/user">Users</a>
-<a href="/status">Status</a>
-<a href="/role">Roles</a>
-<a href="/record">Records</a>
-<a href="/genre">Genres</a>
-<a href="/book">Books</a>
-<a href="http://localhost:8080/api/swagger-ui.html">Documentation</a>
+<body >
+<div  class="w3-container w3-center" th:fragment="menu">
+<button  onclick="location.href = '/login'">LOGIN</button>
+<button  onclick="location.href = '/user'">Users</button>
+<button  onclick="location.href = '/status'">Status</button>
+<button  onclick="location.href = '/role'">Roles</button>
+<button  onclick="location.href = '/record'">Records</button>
+<button  onclick="location.href = '/genre'">Genres</button>
+<button  onclick="location.href = '/book'">Books</button>
+<button  onclick="location.href = 'http://localhost:8080/api/swagger-ui.html'">Documentation</button>
+</div>
 </body>
 </html>

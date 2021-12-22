@@ -6,6 +6,9 @@
     <title>Genre</title>
 </head>
 <body>
+
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${genre}">
     <h2 th:case="null">No genre found!</h2>
     <div th:case="*">
@@ -21,14 +24,18 @@
             <tr th:each="gen : ${genre}">
                 <td th:text="${gen.id}"></td>
                 <td th:text="${gen.genreName}"></td>
-                <td><a th:href="@{genre/edit/{id}(id=${gen.id})}">Edit</a></td>
-                <td><a th:href="@{genre/delete/{id}(id=${gen.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{genre/edit/{id}(id=${gen.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{genre/delete/{id}(id=${gen.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/genre/new">Create genre</a></p>
+    <p><button onclick="location.href = '/genre/new'">Create genre</button></p>
 </div>
-<a href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

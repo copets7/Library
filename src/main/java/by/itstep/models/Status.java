@@ -12,14 +12,8 @@ public class Status {
     private int id;
     @Column(name = "status_name")
     private String statusName;
-    @OneToMany(mappedBy = "status")
-    private List<LogRecord> logRecord;
-
-    public Status(int id, String statusName, List<LogRecord> logRecord) {
-        this.id = id;
-        this.statusName = statusName;
-        this.logRecord = logRecord;
-    }
+//    @OneToMany(mappedBy = "status")
+//    private List<LogRecord> logRecord;
 
     public Status() {
     }
@@ -40,11 +34,11 @@ public class Status {
         this.statusName = statusName;
     }
 
-    public List<LogRecord> getLogRecord() {
-        return logRecord;
-    }
-
-    public void setLogRecord(List<LogRecord> logRecord) {
-        this.logRecord = logRecord;
-    }
+//    public List<LogRecord> getLogRecord() {
+//        return logRecord;
+//    }
+//
+//    public void setLogRecord(List<LogRecord> logRecord) {
+//        this.logRecord = logRecord;
+//    }
 }

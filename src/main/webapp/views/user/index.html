@@ -2,38 +2,18 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Users</title>
 </head>
-<body>
-<style>
-    body{
-        background:lightskyblue;
-    }
-    h2{
-        background-color: gold;
-        color: brown;
-    }
-    table{
-        color: white;
-        padding: 15px;
-        max-width: 125px;
-        margin: 5px;
-        border-radius: 25px;
-    }
-    a{
-        color: green;
-        padding: 15px;
-        max-width: 125px;
-        margin: 5px;
-    }
+<body >
 
-</style>
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${users}">
     <h2 th:case="null">No users found!</h2>
     <div th:case="*">
         <h2>Users</h2>
-        <table>
+        <table >
             <thead>
             <tr>
                 <th>Id</th>
@@ -48,14 +28,18 @@
                 <td th:text="${user.userName}"></td>
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.role.getRoleName()}"></td>
-                <td><a th:href="@{user/edit/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{user/delete/{id}(id=${user.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{user/edit/{id}(id=${user.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{user/delete/{id}(id=${user.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a  href="/user/new">Create user</a></p>
+    <p><button onclick="location.href = '/user/new'">Create user</button></p>
 </div>
-<a  href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

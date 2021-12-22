@@ -1,28 +1,32 @@
 package by.itstep.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "user")
-
+@ApiModel(value = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Идентификатор первичного ключа")
     private int id;
     @Column(name = "user_name")
+    @ApiModelProperty(value = "Имя пользователя")
     private String userName;
     @Column(name = "email")
+    @ApiModelProperty(value = "Почтовый ящик")
     private String email;
     @Column(name = "password")
+    @ApiModelProperty(value = "Пароль")
     private String password;
     @ManyToOne
     @JoinColumn(name = "role_id")
+    @ApiModelProperty(value = "Роль пользователя")
     private Role role;
-    @OneToMany(mappedBy = "user")
-    private List <LogRecord> logRecord;
+
 
     public User() {
     }
@@ -67,31 +71,5 @@ public class User {
         this.id = id;
     }
 
-    public List<LogRecord> getLogRecord() {
-        return logRecord;
-    }
 
-    public void setLogRecord(List<LogRecord> logRecord) {
-        this.logRecord = logRecord;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                 userName + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(role, user.role) && Objects.equals(logRecord, user.logRecord);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userName, email, password, role, logRecord);
-    }
 }

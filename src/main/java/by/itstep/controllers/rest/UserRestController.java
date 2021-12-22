@@ -1,7 +1,7 @@
 package by.itstep.controllers.rest;
 
 
-import by.itstep.exception.UserNotFoundException;
+import by.itstep.dto.UserDto;
 import by.itstep.models.User;
 import by.itstep.service.UserService;
 
@@ -25,7 +25,7 @@ public class UserRestController {
     }
 
     @ApiOperation(value = "Метод находит всех пользователей")
-    @GetMapping(value = "/all")
+    @RequestMapping(value = "/all" , method = RequestMethod.GET)
     public ResponseEntity <List<User>> findAllUsers() {
         List<User> users = userService.findAll();
 
@@ -34,24 +34,41 @@ public class UserRestController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping(value = "/new")
-    public ResponseEntity saveUser(@RequestBody User user) {
-        try {
-            userService.save(user);
-            return ResponseEntity.ok("Пользователь успешно сохранен");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошла ошибка");
-        }
+    @ApiOperation(value = "Метод добавляет нового пользователя")
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public ResponseEntity saveUser(@RequestBody  User user) {
+        userService.save(user);
+        return  user!= null
+                ? new ResponseEntity<>(user , HttpStatus.CREATED)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
-
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<User> read(@PathVariable(name = "id") int id) throws UserNotFoundException {
-        final User user = userService.findById(id);
-
-        return  userService.userToDto(user) != null
-                ? new ResponseEntity<>(user, HttpStatus.OK)
+    @ApiOperation(value = "Метод находит одного пользователя")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDto> getOneUser(@PathVariable("id") int userId) {
+        final User user = this.userService.findById(userId);
+        UserDto userDto = userService.userToDto(user);
+        return userDto != null
+                ? new ResponseEntity<>(userDto, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ApiOperation(value = "Метод редактирует пользователя")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+        userService.save(user);
+        return user != null
+                ? new ResponseEntity<>(user , HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ApiOperation(value = "Метод удаляет пользователя")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<User> deleteUser(@PathVariable int id){
+        final User user = this.userService.findById(id);
+        userService.delete(user);
+        return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

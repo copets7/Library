@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto userToDto(User user){
         UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
         userDto.setUserName(user.getUserName());
         userDto.setEmail(user.getEmail());
         userDto.setRole(user.getRole());

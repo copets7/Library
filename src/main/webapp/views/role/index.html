@@ -6,6 +6,9 @@
     <title>Roles</title>
 </head>
 <body>
+
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${roles}">
     <h2 th:case="null">No roles found!</h2>
     <div th:case="*">
@@ -21,14 +24,18 @@
             <tr th:each="role : ${roles}">
                 <td th:text="${role.id}"></td>
                 <td th:text="${role.roleName}"></td>
-                <td><a th:href="@{role/edit/{id}(id=${role.id})}">Edit</a></td>
-                <td><a th:href="@{role/delete/{id}(id=${role.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{role/edit/{id}(id=${role.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{role/delete/{id}(id=${role.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/role/new">Create role</a></p>
+    <p><button onclick="location.href = '/role/new'">Create role</button></p>
 </div>
-<a href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

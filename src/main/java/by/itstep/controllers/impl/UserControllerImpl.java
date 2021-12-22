@@ -63,7 +63,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @GetMapping("edit/{id}")
-    public String updateUserForm(@PathVariable("id") int id, Model model) throws UserNotFoundException {
+    public String updateUserForm(@PathVariable("id") int id, Model model)  {
         model.addAttribute("roles", roleService.findAll());
         User user = userService.findById(id);
         UserDto userDto = userService.userToDto(user);

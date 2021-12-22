@@ -13,7 +13,7 @@ public interface UserService extends UserDetailsService {
 
     List<User> findAll();
 
-    User findById(int id) throws UserNotFoundException;
+    User findById(int id) ;
 
    UserDetails loadUserByUsername(String userName);
 

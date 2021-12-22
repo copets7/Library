@@ -6,6 +6,9 @@
     <title>Records</title>
 </head>
 <body>
+
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${records}">
     <h2 th:case="null">No records found!</h2>
     <div th:case="*">
@@ -31,16 +34,20 @@
                 <td th:text="${record.createDate}"></td>
                 <td th:text="${record.closeDate}"></td>
                 <td th:text="${record.createBy}"></td>
-                <td><a th:href="@{record/edit/{id}(id=${record.id})}">Edit</a></td>
-                <td><a th:href="@{record/delete/{id}(id=${record.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{record/edit/{id}(id=${record.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{record/delete/{id}(id=${record.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
                 <td  th:style="'color: red'" th:text="${delay.delayDate(record.id)}"></td>
                 <td><a th:style="'color: green'" th:href="@{record/delay/{id}(id=${record.id})}">Send mail</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/record/new">Create record</a></p>
+    <p><button onclick="location.href = '/record/new'">Create record</button></p>
 </div>
-<a href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Status</title>
 </head>
+
 <body>
+
+<div th:insert="index :: menu"></div>
+
 <div th:switch="${status}">
     <h2 th:case="null">No status found!</h2>
     <div th:case="*">
@@ -21,14 +25,18 @@
             <tr th:each="st : ${status}">
                 <td th:text="${st.id}"></td>
                 <td th:text="${st.statusName}"></td>
-                <td><a th:href="@{status/edit/{id}(id=${st.id})}">Edit</a></td>
-                <td><a th:href="@{status/delete/{id}(id=${st.id})}">Delete</a></td>
+                <td><form method="GET" th:action="@{status/edit/{id}(id=${st.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Edit</button>
+                </form></td>
+                <td><form method="GET" th:action="@{status/delete/{id}(id=${st.id})}">
+                    <button type="submit" name="submit" value="value" class="link-button">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/status/new">Create status</a></p>
+    <p><button onclick="location.href = '/status/new'">Create status</button></p>
 </div>
-<a href="/">Back</a>
+<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

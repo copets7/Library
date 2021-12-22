@@ -13,18 +13,7 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role" ,  fetch = FetchType.EAGER)
-    private List <User> user;
-
     public Role() {
-    }
-
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
     }
 
     public int getId() {

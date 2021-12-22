@@ -17,20 +17,12 @@ public class Book {
     private String bookAuthor;
     @Column(name = "ISBN")
     private String ISBN;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "genre_id")
     private TypeGenre typeGenre;
-    @OneToOne(mappedBy = "book")
-    private LogRecord logRecord;
+//    @OneToOne(mappedBy = "book")
+//    private LogRecord logRecord;
 
-    public Book(int id, String bookName, String bookAuthor, String ISBN, TypeGenre typeGenre, LogRecord logRecord) {
-        this.id = id;
-        this.bookName = bookName;
-        this.bookAuthor = bookAuthor;
-        this.ISBN = ISBN;
-        this.typeGenre = typeGenre;
-        this.logRecord = logRecord;
-    }
 
     public Book() {
     }
@@ -75,11 +67,11 @@ public class Book {
         this.typeGenre = typeGenre;
     }
 
-    public LogRecord getLogRecord() {
-        return logRecord;
-    }
-
-    public void setLogRecord(LogRecord logRecord) {
-        this.logRecord = logRecord;
-    }
+//    public LogRecord getLogRecord() {
+//        return logRecord;
+//    }
+//
+//    public void setLogRecord(LogRecord logRecord) {
+//        this.logRecord = logRecord;
+//    }
 }
