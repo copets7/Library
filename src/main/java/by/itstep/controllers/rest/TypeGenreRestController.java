@@ -1,9 +1,6 @@
 package by.itstep.controllers.rest;
 
-
-import by.itstep.dto.UserDto;
 import by.itstep.models.TypeGenre;
-import by.itstep.models.User;
 import by.itstep.service.TypeGenreService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,7 +32,7 @@ public class TypeGenreRestController {
 
     @ApiOperation(value = "Метод добавляет новый жанр книги")
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public ResponseEntity saveGenre(@RequestBody TypeGenre genre) {
+    public ResponseEntity<?> saveGenre(@RequestBody TypeGenre genre) {
         typeGenreService.save(genre);
         return  genre!= null
                 ? new ResponseEntity<>(genre , HttpStatus.CREATED)

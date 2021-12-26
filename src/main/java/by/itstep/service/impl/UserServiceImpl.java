@@ -3,10 +3,7 @@ package by.itstep.service.impl;
 import by.itstep.dto.UserDto;
 import by.itstep.exception.UserAlreadyExistException;
 import by.itstep.exception.UserNotFoundException;
-import by.itstep.models.Role;
-import by.itstep.models.Roles;
 import by.itstep.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,22 +26,6 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-    }
-
-
-    public User registration(User user) throws UserAlreadyExistException {
-        if (userRepository.findFirstByUserName(user.getUserName()) != null) {
-            throw new UserAlreadyExistException("Пользователь с таким именем существует");
-        }
-        return userRepository.save(user);
-    }
-
-    public User getOne(int id) throws UserNotFoundException {
-        User user = userRepository.findById(id).get();
-        if (user == null) {
-            throw new UserNotFoundException("Пользователь не найден");
-        }
-        return user;
     }
 
 
@@ -99,21 +80,4 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-
-
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-      User user = userRepository.findFirstByUserName(userName);
-      if (user == null){
-          throw  new UsernameNotFoundException("User not found with name : " + userName);
-      }
-      List<GrantedAuthority> roles = new ArrayList<>();
-      roles.add(new SimpleGrantedAuthority(user.getRole().getRoleName()));
-
-      return new org.springframework.security.core.userdetails.User(
-              user.getUserName(),
-              user.getPassword(),
-              roles
-      );
-    }
 }

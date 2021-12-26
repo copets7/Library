@@ -36,7 +36,7 @@ public class UserRestController {
 
     @ApiOperation(value = "Метод добавляет нового пользователя")
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public ResponseEntity saveUser(@RequestBody  User user) {
+    public ResponseEntity<?> saveUser(@RequestBody  User user) {
         userService.save(user);
         return  user!= null
                 ? new ResponseEntity<>(user , HttpStatus.CREATED)
