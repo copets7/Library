@@ -23,7 +23,7 @@ public class LogRecordRestController {
 
 
     @ApiOperation(value = "Метод находит все записи")
-    @RequestMapping(value = "/all" , method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<LogRecord>> findAllRecords() {
         List<LogRecord> logRecordList = recordService.findAll();
 
@@ -33,7 +33,7 @@ public class LogRecordRestController {
     }
 
     @ApiOperation(value = "Метод добавляет новую запись")
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> saveRecord(@RequestBody LogRecord logRecord) {
         recordService.save(logRecord);
         return  logRecord!= null
@@ -52,7 +52,7 @@ public class LogRecordRestController {
     }
 
     @ApiOperation(value = "Метод редактирует запись")
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<LogRecord> updateRecord(@RequestBody LogRecord logRecord){
         recordService.save(logRecord);
         return logRecord != null

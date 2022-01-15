@@ -11,8 +11,8 @@
     <h1>Messages sent to email  :</h1>
    <p th:text="${send.sendMail(record.user.getEmail())}"></p>
     <h1 th:text="${record.user.getEmail()}"> Mail send</h1>
-    <p><button onclick="location.href = '/record'">Back</button></p>
 </div>
 </form>
+<button onclick="location.href = '/record'">Back</button>
 </body>
 </html>

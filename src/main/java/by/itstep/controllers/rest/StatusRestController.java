@@ -22,7 +22,7 @@ public class StatusRestController {
     }
 
     @ApiOperation(value = "Метод находит все статусы")
-    @RequestMapping(value = "/all" , method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Status>> findAllStatus() {
         List<Status> statusList = statusService.findAll();
 
@@ -32,7 +32,7 @@ public class StatusRestController {
     }
 
     @ApiOperation(value = "Метод добавляет новый статус")
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> saveStatus(@RequestBody Status status) {
         statusService.save(status);
         return  status!= null
@@ -51,7 +51,7 @@ public class StatusRestController {
     }
 
     @ApiOperation(value = "Метод редактирует статус")
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Status> updateStatus(@RequestBody Status status){
         statusService.save(status);
         return status != null

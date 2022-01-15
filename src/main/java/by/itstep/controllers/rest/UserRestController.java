@@ -25,7 +25,7 @@ public class UserRestController {
     }
 
     @ApiOperation(value = "Метод находит всех пользователей")
-    @RequestMapping(value = "/all" , method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity <List<User>> findAllUsers() {
         List<User> users = userService.findAll();
 
@@ -35,7 +35,7 @@ public class UserRestController {
     }
 
     @ApiOperation(value = "Метод добавляет нового пользователя")
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody  User user) {
         userService.save(user);
         return  user!= null
@@ -55,7 +55,7 @@ public class UserRestController {
     }
 
     @ApiOperation(value = "Метод редактирует пользователя")
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@RequestBody User user){
         userService.save(user);
         return user != null

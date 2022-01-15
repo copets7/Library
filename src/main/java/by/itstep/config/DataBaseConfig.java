@@ -24,7 +24,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"by.itstep.repository"})
 
-public class AppConfiguration {
+public class DataBaseConfig {
 
     @Value("${database.driverClassName}")
     private String driverClass;
