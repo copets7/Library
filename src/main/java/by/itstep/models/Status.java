@@ -1,7 +1,6 @@
 package by.itstep.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "status")
@@ -12,8 +11,7 @@ public class Status {
     private int id;
     @Column(name = "status_name")
     private String statusName;
-//    @OneToMany(mappedBy = "status")
-//    private List<LogRecord> logRecord;
+
 
     public Status() {
     }
@@ -34,11 +32,4 @@ public class Status {
         this.statusName = statusName;
     }
 
-//    public List<LogRecord> getLogRecord() {
-//        return logRecord;
-//    }
-//
-//    public void setLogRecord(List<LogRecord> logRecord) {
-//        this.logRecord = logRecord;
-//    }
 }

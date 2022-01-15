@@ -21,7 +21,7 @@ public class Schedule {
         this.sendMail = sendMail;
     }
 
-    @Scheduled(cron = "0 16 19 * * ?")
+    @Scheduled(cron = "0 35 19 * * ?")
     public void runSchedule() throws InterruptedException {
         Logger logger = LoggerFactory.getLogger("Samplelogger");
         LocalDate localDate = LocalDate.now();

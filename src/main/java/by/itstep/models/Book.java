@@ -1,9 +1,6 @@
 package by.itstep.models;
 
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -20,8 +17,6 @@ public class Book {
     @ManyToOne()
     @JoinColumn(name = "genre_id")
     private TypeGenre typeGenre;
-//    @OneToOne(mappedBy = "book")
-//    private LogRecord logRecord;
 
 
     public Book() {
@@ -67,11 +62,4 @@ public class Book {
         this.typeGenre = typeGenre;
     }
 
-//    public LogRecord getLogRecord() {
-//        return logRecord;
-//    }
-//
-//    public void setLogRecord(LogRecord logRecord) {
-//        this.logRecord = logRecord;
-//    }
 }

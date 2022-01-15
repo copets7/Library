@@ -1,10 +1,8 @@
 package by.itstep.controllers.impl;
 
 import by.itstep.controllers.TypeGenreController;
-import by.itstep.models.Status;
 import by.itstep.models.TypeGenre;
 import by.itstep.service.TypeGenreService;
-import by.itstep.service.impl.TypeGenreServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

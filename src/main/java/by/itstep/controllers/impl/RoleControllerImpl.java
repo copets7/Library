@@ -2,9 +2,7 @@ package by.itstep.controllers.impl;
 
 import by.itstep.controllers.RoleController;
 import by.itstep.models.Role;
-import by.itstep.models.User;
 import by.itstep.service.RoleService;
-import by.itstep.service.impl.RoleServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

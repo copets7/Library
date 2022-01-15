@@ -1,7 +1,6 @@
 package by.itstep.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "type_genre")

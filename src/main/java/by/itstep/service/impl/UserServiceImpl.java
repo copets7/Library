@@ -1,19 +1,12 @@
 package by.itstep.service.impl;
 
 import by.itstep.dto.UserDto;
-import by.itstep.exception.UserAlreadyExistException;
-import by.itstep.exception.UserNotFoundException;
 import by.itstep.models.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import by.itstep.repository.UserRepository;
 import by.itstep.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -1,10 +1,8 @@
 package by.itstep.controllers.impl;
 
 import by.itstep.controllers.StatusController;
-import by.itstep.models.Role;
 import by.itstep.models.Status;
 import by.itstep.service.StatusService;
-import by.itstep.service.impl.StatusServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
