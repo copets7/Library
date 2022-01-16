@@ -15,15 +15,15 @@ public class Schedule {
 
    private final LogRecordService logRecordService;
    private final SendMail sendMail;
+   private final Logger logger = LoggerFactory.getLogger(Schedule.class);
 
     public Schedule(LogRecordService logRecordService, SendMail sendMail) {
         this.logRecordService = logRecordService;
         this.sendMail = sendMail;
     }
 
-    @Scheduled(cron = "0 31 17 * * ?")
+    @Scheduled(cron = "0 58 19 * * ?")
     public void runSchedule() throws InterruptedException {
-        Logger logger = LoggerFactory.getLogger(Schedule.class);
         LocalDate localDate = LocalDate.now();
         List<LogRecord> logRecordList = logRecordService.findAll();
         for(LogRecord rec : logRecordList){

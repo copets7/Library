@@ -3,7 +3,8 @@ package by.itstep.service.impl;
 import by.itstep.models.LogRecord;
 import by.itstep.repository.LogRecordRepository;
 import by.itstep.service.LogRecordService;
-import by.itstep.utils.SendMail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,12 +15,10 @@ import java.util.List;
 public class LogRecordServiceImpl implements LogRecordService {
 
     private final LogRecordRepository logRecordRepository;
-    private final SendMail sendMail;
+    private final Logger  logger = LoggerFactory.getLogger(LogRecordServiceImpl.class);
 
-
-    public LogRecordServiceImpl(LogRecordRepository logRecordRepository, SendMail sendMail) {
+    public LogRecordServiceImpl(LogRecordRepository logRecordRepository) {
         this.logRecordRepository = logRecordRepository;
-        this.sendMail = sendMail;
     }
 
 
@@ -59,6 +58,7 @@ public class LogRecordServiceImpl implements LogRecordService {
         String str = "  This book is out of date ";
         LogRecord rec = logRecordRepository.findById(id).get();
         if (localDate.isAfter(rec.getCloseDate())) {
+            logger.info("Book " + rec.getBook().getBookName() + "is overdue");
             return str;
         }
         return "";

@@ -1,5 +1,7 @@
 package by.itstep.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.MailSender;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
 @PropertySource("classpath:mail.properties")
 @Component
 public class SendMail {
+
+    private final Logger logger = LoggerFactory.getLogger(SendMail.class);
 
     @Value("${msg.setFrom}")
     private String msgSetFrom;
@@ -30,5 +34,6 @@ public class SendMail {
         msg.setSubject(msgSetSubject);
         msg.setText(msgSetText);
         mailSender.send(msg);
+        logger.info(msg + " send to  - " + email );
     }
 }
