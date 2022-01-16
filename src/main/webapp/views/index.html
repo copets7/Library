@@ -7,7 +7,8 @@
 
 </head>
 <body >
-<div  class="w3-container w3-center" th:fragment="menu">
+<div  class="w3-container w3-center" style="background-color: silver" th:fragment="menu">
+    <div class="w3-bar  w3-padding-24" >
 <button  onclick="location.href = '/login'">LOGIN</button>
 <button  onclick="location.href = '/user'">Users</button>
 <button  onclick="location.href = '/status'">Status</button>
@@ -16,6 +17,7 @@
 <button  onclick="location.href = '/genre'">Genres</button>
 <button  onclick="location.href = '/book'">Books</button>
 <button  onclick="location.href = 'http://localhost:8080/api/swagger-ui.html'">Documentation</button>
+    </div>
 </div>
 </body>
 </html>

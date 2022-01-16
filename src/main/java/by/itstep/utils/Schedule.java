@@ -21,15 +21,16 @@ public class Schedule {
         this.sendMail = sendMail;
     }
 
-    @Scheduled(cron = "0 35 19 * * ?")
+    @Scheduled(cron = "0 31 17 * * ?")
     public void runSchedule() throws InterruptedException {
-        Logger logger = LoggerFactory.getLogger("Samplelogger");
+        Logger logger = LoggerFactory.getLogger(Schedule.class);
         LocalDate localDate = LocalDate.now();
         List<LogRecord> logRecordList = logRecordService.findAll();
         for(LogRecord rec : logRecordList){
             if (localDate.isAfter(rec.getCloseDate())) {
                 sendMail.sendMail(rec.getUser().getEmail());
-               logger.info("Email send to  " + rec.getUser().getUserName());
+               logger.info("Email send to  " + rec.getUser().getUserName() + " to email - " + rec.getUser().getEmail());
+
             }
             Thread.sleep(1000L);
         }

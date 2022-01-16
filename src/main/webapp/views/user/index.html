@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Users</title>
 </head>
-<body >
+<body>
 
 <div th:insert="index :: menu"></div>
 
-<div th:switch="${users}">
+<div  th:switch="${users}">
     <h2 th:case="null">No users found!</h2>
     <div th:case="*">
         <h2>Users</h2>
