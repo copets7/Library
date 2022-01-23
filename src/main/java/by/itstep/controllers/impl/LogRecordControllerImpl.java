@@ -7,7 +7,7 @@ import by.itstep.service.BookService;
 import by.itstep.service.LogRecordService;
 import by.itstep.service.StatusService;
 import by.itstep.service.UserService;
-import by.itstep.utils.SendMail;
+import by.itstep.sendMail.SendMail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

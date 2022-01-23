@@ -1,4 +1,4 @@
-package by.itstep.utils;
+package by.itstep.sendMail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
