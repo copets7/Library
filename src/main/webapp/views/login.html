@@ -2,9 +2,20 @@
 <html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Login page</title>
+    <style>
+        body{
+            margin: 20px;
+            background-image: url(https://image.freepik.com/free-photo/creative-composition-world-book-day_23-2148883765.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
+<div class="w3-container" >
 <p th:if="${loginError}" class="error">Incorrect</p>
 <form th:action="@{/}" method="post">
     <table>
@@ -20,6 +31,7 @@
     </table>
     <button type="submit">Log in</button>
 </form>
-
+    <p><button onclick="location.href = '/'">Back</button></p>
+</div>
 </body>
 </html>

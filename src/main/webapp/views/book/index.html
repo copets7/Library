@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Books</title>
+    <style>
+        body{
+            margin: 20px;
+            background-image: url(https://image.freepik.com/free-photo/creative-composition-world-book-day_23-2148883765.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
-<body>
+<body >
 
 <div th:insert="index :: menu"></div>
 
@@ -42,9 +51,10 @@
     </div>
     <p><button onclick="location.href = '/book/new'">Create book</button></p>
 </div>
+<div>
+<p><button onclick="location.href = '/book/upload'">Upload Books to File</button></p>
+</div>
+<p><button onclick="location.href = '/'">Back</button></p>
 
-<button onclick="location.href = '/book/upload'">Upload Books to File</button>
-
-<button onclick="location.href = '/'">Back</button>
 </body>
 </html>

@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Users</title>
+    <style>
+        body{
+            margin: 20px;
+            background-image: url(https://image.freepik.com/free-photo/creative-composition-world-book-day_23-2148883765.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
-<body>
-
+<body >
 <div th:insert="index :: menu"></div>
 
 <div  th:switch="${users}">
