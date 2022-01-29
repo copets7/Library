@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="margin: 30px">
+    <form enctype="multipart/form-data" th:action="@{/book/upload}" th:method="POST">
+        <p style="color: green">Select a file with a list of books</p>
+        <p><input type="file" name="file" >
+            <input type="submit" value="Send"></p>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,25 +1,40 @@
 package by.itstep.controllers.impl;
 
+import by.itstep.addDataToDataBaseFromFile.AddListOfBooksFromFile;
 import by.itstep.controllers.BookController;
 import by.itstep.models.Book;
+import by.itstep.parser.CsvParser;
 import by.itstep.service.BookService;
 import by.itstep.service.TypeGenreService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 @Controller
 @RequestMapping("/book")
 public class BookControllerImpl implements BookController {
 
+    private final Logger logger = LoggerFactory.getLogger(BookControllerImpl.class);
+
+
     private final BookService bookService;
     private final TypeGenreService typeGenreService;
+    private final CsvParser csvParser;
 
-    public BookControllerImpl(BookService bookService, TypeGenreService typeGenreService) {
+    public BookControllerImpl(BookService bookService, TypeGenreService typeGenreService, CsvParser csvParser) {
         this.bookService = bookService;
         this.typeGenreService = typeGenreService;
+        this.csvParser = csvParser;
     }
 
 
@@ -28,6 +43,18 @@ public class BookControllerImpl implements BookController {
         model.addAttribute("books", bookService.findAll());
         return "book/index";
     }
+
+    @GetMapping(value = "/upload")
+    public String uploadForm() {
+        return "book/upload";
+    }
+
+    @PostMapping(value = "/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        csvParser.fromDataBaseToFile(file,"book");
+        return "redirect:/book";
+    }
+
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
