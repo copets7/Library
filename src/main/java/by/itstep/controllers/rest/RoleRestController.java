@@ -23,7 +23,7 @@ public class RoleRestController {
 
     @ApiOperation(value = "Метод находит все роли")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Role>> findAllRole() {
+    public ResponseEntity<?> findAllRole() {
         List<Role> roleList = roleService.findAll();
 
         return roleList != null &&  !roleList.isEmpty()
@@ -43,7 +43,7 @@ public class RoleRestController {
 
     @ApiOperation(value = "Метод находит одну роль")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Role> getOneRole(@PathVariable("id") int roleId) {
+    public ResponseEntity<?> getOneRole(@PathVariable("id") int roleId) {
         final Role role = this.roleService.findById(roleId);
         return role != null
                 ? new ResponseEntity<>(role, HttpStatus.OK)
@@ -52,7 +52,7 @@ public class RoleRestController {
 
     @ApiOperation(value = "Метод редактирует роль")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Role> updateRole(@RequestBody Role role){
+    public ResponseEntity<?> updateRole(@RequestBody Role role){
         roleService.save(role);
         return role != null
                 ? new ResponseEntity<>(role , HttpStatus.OK)

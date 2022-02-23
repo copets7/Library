@@ -24,7 +24,7 @@ public class LogRecordRestController {
 
     @ApiOperation(value = "Метод находит все записи")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<LogRecord>> findAllRecords() {
+    public ResponseEntity<?> findAllRecords() {
         List<LogRecord> logRecordList = recordService.findAll();
 
         return logRecordList != null &&  !logRecordList.isEmpty()
@@ -44,7 +44,7 @@ public class LogRecordRestController {
 
     @ApiOperation(value = "Метод находит одну запись")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<LogRecord> getOneRecord(@PathVariable("id") int recordId) {
+    public ResponseEntity<?> getOneRecord(@PathVariable("id") int recordId) {
         final LogRecord logRecord = this.recordService.findById(recordId);
         return logRecord != null
                 ? new ResponseEntity<>(logRecord, HttpStatus.OK)
@@ -53,7 +53,7 @@ public class LogRecordRestController {
 
     @ApiOperation(value = "Метод редактирует запись")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<LogRecord> updateRecord(@RequestBody LogRecord logRecord){
+    public ResponseEntity<?> updateRecord(@RequestBody LogRecord logRecord){
         recordService.save(logRecord);
         return logRecord != null
                 ? new ResponseEntity<>(logRecord , HttpStatus.OK)

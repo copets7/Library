@@ -12,6 +12,14 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Class Schedule для отправки писем пользователям о просрочке книги по расписанию
+ * @author Andrey Yarosh "andreyarosh7@gmail.com"
+ * @version 1.0
+ * @see LogRecordService
+ * @see SendMail
+ */
+
 @PropertySource("classpath:schedule.properties")
 @Component
 public class Schedule {
@@ -25,6 +33,7 @@ public class Schedule {
         this.sendMail = sendMail;
     }
 
+    /** Метод проверяет все записи выданных книг и если книга просроченна отправляет письмо */
     @Scheduled(cron = "${schedule.cron}")
     public void runSchedule() throws InterruptedException {
         LocalDate localDate = LocalDate.now();

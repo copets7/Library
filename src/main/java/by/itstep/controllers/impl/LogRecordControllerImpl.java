@@ -1,7 +1,6 @@
 package by.itstep.controllers.impl;
 
 import by.itstep.controllers.LogRecordController;
-import by.itstep.exception.UserNotFoundException;
 import by.itstep.models.LogRecord;
 import by.itstep.service.BookService;
 import by.itstep.service.LogRecordService;
@@ -60,7 +59,7 @@ public class LogRecordControllerImpl implements LogRecordController {
                          @RequestParam("b") int bookId,
                          @RequestParam("u") int userId,
                          @RequestParam("s") int statusId
-    ) throws RuntimeException, UserNotFoundException {
+    ) throws RuntimeException {
         logRecord.setBook(bookService.findById(bookId));
         logRecord.setUser(userService.findById(userId));
         logRecord.setStatus(statusService.findById(statusId));
@@ -96,7 +95,7 @@ public class LogRecordControllerImpl implements LogRecordController {
     public String updateRecord(LogRecord logRecord,
                                @RequestParam("b") int bookId,
                                @RequestParam("u") int userId,
-                               @RequestParam("s") int statusId) throws UserNotFoundException {
+                               @RequestParam("s") int statusId) {
         logRecord.setBook(bookService.findById(bookId));
         logRecord.setUser(userService.findById(userId));
         logRecord.setStatus(statusService.findById(statusId));

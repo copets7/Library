@@ -23,7 +23,7 @@ public class TypeGenreRestController {
 
     @ApiOperation(value = "Метод находит все жанры книг")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity< List<TypeGenre>> viewAllGenre(){
+    public ResponseEntity<?> viewAllGenre(){
         List <TypeGenre> typeGenres = typeGenreService.findAll();
         return typeGenres != null &&  !typeGenres.isEmpty()
                 ? new ResponseEntity<>(typeGenres, HttpStatus.OK)
@@ -42,7 +42,7 @@ public class TypeGenreRestController {
 
     @ApiOperation(value = "Метод находит один жанр книги")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<TypeGenre> getOneGenre(@PathVariable("id") int genreId) {
+    public ResponseEntity<?> getOneGenre(@PathVariable("id") int genreId) {
         final TypeGenre genre = this.typeGenreService.findById(genreId);
 
         return genre != null
@@ -52,7 +52,7 @@ public class TypeGenreRestController {
 
     @ApiOperation(value = "Метод редактирует жанр книги")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<TypeGenre> updateGenre(@RequestBody TypeGenre genre){
+    public ResponseEntity<?> updateGenre(@RequestBody TypeGenre genre){
         typeGenreService.save(genre);
         return genre != null
                 ? new ResponseEntity<>(genre , HttpStatus.OK)

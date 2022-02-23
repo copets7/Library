@@ -5,6 +5,10 @@ create table role
     role_name varchar(45) not null
 );
 
+insert into role (role_name) VALUE ('ROLE_USER');
+insert into role (role_name) VALUE ('ROLE_ADMIN');
+insert into role (role_name) VALUE ('ROLE_MANAGER');
+
 create table status
 (
     id          bigint auto_increment
@@ -19,6 +23,15 @@ create table type_genre
     genre_name varchar(45) not null
 );
 
+insert into type_genre(genre_name) value ('Genre unknown');
+insert into type_genre(genre_name) value ('Fantasy');
+insert into type_genre(genre_name) value ('Autobiography');
+insert into type_genre(genre_name) value ('Science-fiction');
+insert into type_genre(genre_name) value ('Historical novels');
+insert into type_genre(genre_name) value ('Detective stories');
+insert into type_genre(genre_name) value ('Thrillers and horrors');
+insert into type_genre(genre_name) value ('Romance');
+
 create table book
 (
     id       bigint auto_increment
@@ -30,6 +43,12 @@ create table book
     constraint type_genre
         foreign key (genre_id) references type_genre (id)
 );
+
+insert into book(bookName, author, ISBN, genre_id) VALUE ('«Fellowship of the Ring»','John R. R. Tolkien','5-352-00312-4',1);
+insert into book(bookName, author, ISBN, genre_id) VALUE ('«Pride and Prejudice»','Jane Austen','978-5-04-106641-3',1);
+insert into book(bookName, author, ISBN, genre_id) VALUE ('«His Dark Materials»','Philip Pullman','5-353-01207-1',1);
+insert into book(bookName, author, ISBN, genre_id) VALUE ('«The Ultimate Hitchhiker\'s Guide»','Douglas Adams','978-5-17-032458-3',1);
+insert into book(bookName, author, ISBN, genre_id) VALUE ('«The Philosophy of Java»','Bruce Eckel','978-5-4461-1107-7',1);
 
 create index type_genre_idx
     on book (genre_id);

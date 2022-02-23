@@ -23,7 +23,7 @@ public class StatusRestController {
 
     @ApiOperation(value = "Метод находит все статусы")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Status>> findAllStatus() {
+    public ResponseEntity<?> findAllStatus() {
         List<Status> statusList = statusService.findAll();
 
         return statusList != null &&  !statusList.isEmpty()
@@ -43,7 +43,7 @@ public class StatusRestController {
 
     @ApiOperation(value = "Метод находит один статус")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Status> getOneStatus(@PathVariable("id") int statusId) {
+    public ResponseEntity<?> getOneStatus(@PathVariable("id") int statusId) {
         final Status status = this.statusService.findById(statusId);
         return status != null
                 ? new ResponseEntity<>(status, HttpStatus.OK)
@@ -52,7 +52,7 @@ public class StatusRestController {
 
     @ApiOperation(value = "Метод редактирует статус")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Status> updateStatus(@RequestBody Status status){
+    public ResponseEntity<?> updateStatus(@RequestBody Status status){
         statusService.save(status);
         return status != null
                 ? new ResponseEntity<>(status , HttpStatus.OK)

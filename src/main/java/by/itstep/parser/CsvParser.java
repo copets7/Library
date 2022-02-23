@@ -40,34 +40,6 @@ public class CsvParser {
     @Value("${parser.filePath}")
     String filePath;
 
-    public void fromFileToDataBase (MultipartFile file) throws IOException {
-
-        CSVParser csvParser = new CSVParserBuilder().withSeparator(',').build();
-        CSVReader reader = null;
-        {
-            try {
-                reader = new CSVReaderBuilder(new FileReader(file.getOriginalFilename()))
-                        .withCSVParser(csvParser)
-                        .withSkipLines(1)
-                        .build();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                logger.error(e.getMessage());
-            }
-            List<String[]> r = null;
-            try {
-                r = reader.readAll();
-            } catch (IOException e) {
-                e.printStackTrace();
-                logger.error(e.getMessage());
-            } catch (CsvException csvException) {
-                csvException.printStackTrace();
-                logger.error(csvException.getMessage());
-            }
-            r.forEach(x -> System.out.println(Arrays.toString(x)));
-        }
-
-    }
 
     public void fromDataBaseToFile(MultipartFile file, String tableName) {
 

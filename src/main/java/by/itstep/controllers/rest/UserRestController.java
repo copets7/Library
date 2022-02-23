@@ -26,7 +26,7 @@ public class UserRestController {
 
     @ApiOperation(value = "Метод находит всех пользователей")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity <List<User>> findAllUsers() {
+    public ResponseEntity <?> findAllUsers() {
         List<User> users = userService.findAll();
 
         return users != null &&  !users.isEmpty()
@@ -46,7 +46,7 @@ public class UserRestController {
 
     @ApiOperation(value = "Метод находит одного пользователя")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserDto> getOneUser(@PathVariable("id") int userId) {
+    public ResponseEntity<?> getOneUser(@PathVariable("id") int userId) {
         final User user = this.userService.findById(userId);
         UserDto userDto = userService.userToDto(user);
         return userDto != null
@@ -56,7 +56,7 @@ public class UserRestController {
 
     @ApiOperation(value = "Метод редактирует пользователя")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser(@RequestBody User user){
+    public ResponseEntity<?> updateUser(@RequestBody User user){
         userService.save(user);
         return user != null
                 ? new ResponseEntity<>(user , HttpStatus.OK)

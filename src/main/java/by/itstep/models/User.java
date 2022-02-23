@@ -4,6 +4,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.util.Objects;
+
+/**
+ * Class User
+ * @author Andrey Yarosh <andreyarosh7@gmail.com>
+ * @version 1.0
+ * @see Role
+ */
 
 @Entity
 @Table(name = "user")
@@ -71,5 +79,16 @@ public class User {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(role, user.role);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, email, password, role);
+    }
 }

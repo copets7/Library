@@ -23,8 +23,9 @@ public class BookRestController {
 
     @ApiOperation(value = "Метод находит все книги")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Book>> findAllBooks() {
+    public ResponseEntity<?> findAllBooks() {
         List<Book> bookList = bookService.findAll();
+
         return bookList != null &&  !bookList.isEmpty()
                 ? new ResponseEntity<>(bookList, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -42,7 +43,7 @@ public class BookRestController {
 
     @ApiOperation(value = "Метод находит одну книгу")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Book> getOneBook(@PathVariable("id") int bookId) {
+    public ResponseEntity<?> getOneBook(@PathVariable("id") int bookId) {
         final Book book = this.bookService.findById(bookId);
         return book != null
                 ? new ResponseEntity<>(book, HttpStatus.OK)
@@ -51,7 +52,7 @@ public class BookRestController {
 
     @ApiOperation(value = "Метод редактирует книгу")
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Book> updateBook(@RequestBody Book book){
+    public ResponseEntity<?> updateBook(@RequestBody Book book){
         bookService.save(book);
         return book != null
                 ? new ResponseEntity<>(book , HttpStatus.OK)

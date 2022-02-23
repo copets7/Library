@@ -1,33 +1,49 @@
 package by.itstep.models;
-
-
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * Class Record
+ * @author Andrey Yarosh <andreyarosh7@gmail.com>
+ * @version 1.0
+ * @see Book
+ * @see User
+ * @see Status
+ */
 
 @Entity
 @Table(name = "log_record")
 public class LogRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Идентификатор первичного ключа")
     private int id;
     @OneToOne
     @JoinColumn(name = "book_id")
+    @ApiModelProperty(value = "Объект класса книга")
     private Book book;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @ApiModelProperty(value = "Объект класса пользователь")
     private User user;
     @ManyToOne
     @JoinColumn(name = "status_id")
+    @ApiModelProperty(value = "Объект класса статус")
     private Status status;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "create_date")
+    @ApiModelProperty(value = "Дата выдачи книги")
     private LocalDate createDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "close_date")
+    @ApiModelProperty(value = "Дата возврата книги")
     private LocalDate closeDate;
     @Column(name = "create_by")
+    @ApiModelProperty(value = "Имя выдающего книгу")
     private String createBy;
 
     public LogRecord(int id, Book book, User user, Status status, LocalDate createDate, LocalDate closeDate, String createBy) {
@@ -100,15 +116,15 @@ public class LogRecord {
     }
 
     @Override
-    public String toString() {
-        return "LogRecord{" +
-                "id=" + id +
-                ", book=" + book +
-                ", user=" + user +
-                ", status=" + status +
-                ", createDate='" + createDate + '\'' +
-                ", closeDate='" + closeDate + '\'' +
-                ", createBy='" + createBy + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LogRecord)) return false;
+        LogRecord logRecord = (LogRecord) o;
+        return id == logRecord.id && Objects.equals(book, logRecord.book) && Objects.equals(user, logRecord.user) && Objects.equals(status, logRecord.status) && Objects.equals(createDate, logRecord.createDate) && Objects.equals(closeDate, logRecord.closeDate) && Objects.equals(createBy, logRecord.createBy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, book, user, status, createDate, closeDate, createBy);
     }
 }

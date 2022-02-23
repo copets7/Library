@@ -1,6 +1,6 @@
 package by.itstep.controllers;
 
-import by.itstep.exception.UserNotFoundException;
+
 import by.itstep.models.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +12,7 @@ public interface UserController {
 
     List<User> findAll();
 
-    User findById(int id) throws UserNotFoundException;
+    User findById(int id);
 
     User save(User user);
 

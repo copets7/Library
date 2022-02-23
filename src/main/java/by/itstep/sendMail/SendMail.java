@@ -8,6 +8,13 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
+/**
+ * Class SendMail для отправки письма пользователю о просрочке книги
+ * @author Andrey Yarosh "andreyarosh7@gmail.com"
+ * @version 1.0
+ * @see MailSender
+ */
+
 @PropertySource("classpath:mail.properties")
 @Component
 public class SendMail {
