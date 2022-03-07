@@ -1,27 +1,24 @@
 package by.itstep.parser;
-import com.opencsv.*;
 
-import com.opencsv.exceptions.CsvException;
+import com.opencsv.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
-import java.util.Arrays;
-import java.util.List;
 
+/**
+ * Class CsvParser для Записи данных из базы данных в файл
+ * @author Andrey Yarosh "andreyarosh7@gmail.com"
+ * @version 1.0
+ */
 
 @PropertySource("classpath:parser.properties")
 @Component

@@ -25,14 +25,16 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>Role Name</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="role : ${roles}">
-                <td th:text="${role.id}"></td>
+                <td></td>
                 <td th:text="${role.roleName}"></td>
+                <td></td>
                 <td><form method="GET" th:action="@{role/edit/{id}(id=${role.id})}">
                     <button type="submit" name="submit" value="value" class="link-button">Edit</button>
                 </form></td>

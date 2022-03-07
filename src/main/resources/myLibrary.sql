@@ -16,6 +16,8 @@ create table status
     status_name varchar(45) not null
 );
 
+insert into status (status_name) VALUE ('ON_HAND');
+
 create table type_genre
 (
     id         bigint auto_increment

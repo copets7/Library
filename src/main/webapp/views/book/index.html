@@ -25,20 +25,28 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>Book Name</th>
-                <th>Book Author Name</th>
-                <th>Book ISBN</th>
-                <th>Book Genre</th>
+                <th></th>
+                <th>Author</th>
+                <th></th>
+                <th>ISBN</th>
+                <th></th>
+                <th>Genre</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="book : ${books}">
-                <td th:text="${book.id}"></td>
+                <td></td>
                 <td th:text="${book.bookName}"></td>
+                <td></td>
                 <td th:text="${book.bookAuthor}"></td>
+                <td></td>
                 <td th:text="${book.ISBN}"></td>
+                <td></td>
                 <td th:text="${book.typeGenre.genreName}"></td>
+                <td></td>
                 <td><form method="GET" th:action="@{book/edit/{id}(id=${book.id})}">
                     <button type="submit" name="submit" value="value" class="link-button">Edit</button>
                 </form></td>

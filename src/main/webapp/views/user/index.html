@@ -24,18 +24,24 @@
         <table >
             <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>User Name</th>
+                <th></th>
                 <th>Email</th>
+                <th></th>
                 <th>Role</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.id}"></td>
+                <td></td>
                 <td th:text="${user.userName}"></td>
+                <td></td>
                 <td th:text="${user.email}"></td>
+                <td></td>
                 <td th:text="${user.role.getRoleName()}"></td>
+                <td></td>
                 <td><form method="GET" th:action="@{user/edit/{id}(id=${user.id})}">
                     <button type="submit" name="submit" value="value" class="link-button">Edit</button>
                 </form></td>

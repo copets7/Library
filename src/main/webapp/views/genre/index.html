@@ -25,14 +25,16 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>Genre</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="gen : ${genre}">
-                <td th:text="${gen.id}"></td>
+                <td></td>
                 <td th:text="${gen.genreName}"></td>
+                <td></td>
                 <td><form method="GET" th:action="@{genre/edit/{id}(id=${gen.id})}">
                     <button type="submit" name="submit" value="value" class="link-button">Edit</button>
                 </form></td>

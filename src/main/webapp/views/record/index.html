@@ -25,24 +25,36 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>Book Name</th>
+                <th></th>
                 <th>User Name</th>
+                <th></th>
                 <th>Status</th>
+                <th></th>
                 <th>Create Date</th>
+                <th></th>
                 <th>Close Date</th>
+                <th></th>
                 <th>Create By</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="record : ${records}">
-                <td th:text="${record.id}"></td>
+                <td></td>
                 <td th:text="${record.book.getBookName()}"></td>
+                <td></td>
                 <td th:text="${record.user.getUserName()}"></td>
+                <td></td>
                 <td th:text="${record.status.getStatusName()}"></td>
+                <td></td>
                 <td th:text="${record.createDate}"></td>
+                <td></td>
                 <td th:text="${record.closeDate}"></td>
+                <td></td>
                 <td th:text="${record.createBy}"></td>
+                <td></td>
                 <td><form method="GET" th:action="@{record/edit/{id}(id=${record.id})}">
                     <button type="submit" name="submit" value="value" class="link-button">Edit</button>
                 </form></td>
